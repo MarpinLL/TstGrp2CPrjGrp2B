@@ -3,6 +3,7 @@ package SubsistemaGestionOrdenesTrabajo;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.junit.jupiter.api.AfterAll;
@@ -30,17 +31,6 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 	static void tearDown() throws Exception {
 	}
 	
-	/*public OrdenTrabajo(Integer identificador, String descripcion, 
-	ArrayList<String> material, ArrayList<Presupuesto> presupuesto,
-	Double coste, String responsable, Integer personal, Date fechaInicio, Integer duracion, 
-	String estado, Proceso proceso)*/
-
-	/*public Presupuesto(Integer identificador, String empresa, Double presupuesto, Date fechaInicio, Integer duracion,
-			ArrayList<String> material, Integer personal)*/
-	
-	/*public Proceso(Integer identificador, String nombreProceso, String descripcion, 
-			Double coste, Double estimado, String estado, String responsable, String servicio, 
-			ArrayList<Incidencia> incidencias, ArrayList<OrdenTrabajo> ordenesTrabajo, Date fechaInicio)*/
 	
 	@SuppressWarnings("deprecation")
 	@Test
@@ -91,6 +81,7 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 			e.printStackTrace();
 		}
 
+		//Assert
 		assertEquals(otEsperada, otReal, "Error al inicializar ot");	
 	}
 	
@@ -117,7 +108,7 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 						material, pres, 1000.0, "Pepe", 10, new Date(2021,12,31), 80, "Pendiente de asignación", proceso));
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
-		//assertEquals("Identificador negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
+		assertEquals("Identificador negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
 
 	}
 	
@@ -147,7 +138,7 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 						material, pres, 1000.0, "Pepe", 10, new Date(2021,12,31), 80, "Pendiente de asignación", proceso));
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
-		//assertEquals("Descripcion superior a 500 chars", e.getMessage(), "Mensaje de excepcion incorrecto");	
+		assertEquals("Descripcion superior a 500 chars", e.getMessage(), "Mensaje de excepcion incorrecto");	
 
 	}
 	
@@ -174,7 +165,7 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 						material, pres, 1000.0, "Pepe1", 10, new Date(2021,12,31), 80, "Pendiente de asignación", proceso));
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
-		//assertEquals("Responsable no alfabetico", e.getMessage(), "Mensaje de excepcion incorrecto");	
+		assertEquals("Responsable no alfabetico", e.getMessage(), "Mensaje de excepcion incorrecto");	
 
 	}
 	
@@ -201,12 +192,11 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 						material, pres, 1000.0, "Pepe", -10, new Date(2021,12,31), 80, "Pendiente de asignación", proceso));
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
-		//assertEquals("Personal negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
+		assertEquals("Personal negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
 	}
 	
 	@SuppressWarnings("deprecation")
 	@Test
-	@Tag("Disabled")
 	@DisplayName("Caso de prueba Inicializar 0063 - Introducir fecha de inicio con formato incorrecto")
 	void testInicializar_63() {
 		//Arrange
@@ -222,13 +212,23 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 				"Pendiente de asignación", "Pepe", "Electricidad", new ArrayList<>(), 
 				new ArrayList<>(), new Date(2021,12,31));
 	
+		Calendar fechaSis = Calendar.getInstance();
+		//fechaSis.set(2021, null, 22);
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 2);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 30);
+		Date fecha = fechaSis.getTime();
+		System.out.println(fecha);
+		new Date(20,12,2021);
+		System.out.println(new Date(20,12,2021));
+		
 		//Assert
-		CustomException e = assertThrows(CustomException.class,
+		Exception e = assertThrows(Exception.class,
 				() -> sub.inicializar(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-						material, pres, 1000.0, "Pepe", -10, new Date(2021,12,31), 80, "Pendiente de asignación", proceso));
+						material, pres, 1000.0, "Pepe", 10, new Date(20,12,2021), 80, "Pendiente de asignación", proceso));
 
-		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
-		//assertEquals("Personal negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
+		assertEquals(1, e, "Codigo de excepcion incorrecto");
+		assertEquals("Personal negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -254,7 +254,7 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 						material, pres, 1000.0, "Pepe", 10, new Date(2021,12,31), -80, "Pendiente de asignación", proceso));
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
-		//assertEquals("Duración negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
+		assertEquals("Duracion negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
 	}
 	
 	/**/
@@ -278,7 +278,6 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 		
 		OrdenTrabajo otEsperada = new OrdenTrabajo(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
 				material, pres, 1000.0, "Pepe", 10, new Date(2021,12,31), 80, "Pendiente de asignación", proceso);
-		
 		
 		//Act
 		OrdenTrabajo otReal = null;
@@ -313,15 +312,10 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
 				() -> sub.inicializar(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-						material, pres, 1000.0, "Pepe", 10, new Date(2021,12,31), -80, "Esperando", proceso));
+						material, pres, 1000.0, "Pepe", 10, new Date(2021,12,31), 80, "Esperando", proceso));
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
+		assertEquals("Estado no válido", e.getMessage(), "Mensaje de excepcion incorrecto");
 	}
 	
-	/*CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(null, null, null, null, null, null, null, null, null, null, null));
-
-		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
-		assertEquals("Identificador negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	*/
-
 }
