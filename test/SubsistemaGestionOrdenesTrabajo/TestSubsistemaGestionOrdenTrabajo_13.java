@@ -34,7 +34,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		
 		Calendar fechaSis = Calendar.getInstance();
 		fechaSis.set(Calendar.YEAR, 2021);
-		fechaSis.set(Calendar.MONTH, 3);
+		fechaSis.set(Calendar.MONTH, 8);
 		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
 		
 		/*ArrayList<Presupuesto> pres = new ArrayList<>();
@@ -69,7 +69,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 			Double coste, Double estimado, String estado, String responsable, String servicio, 
 			ArrayList<Incidencia> incidencias, ArrayList<OrdenTrabajo> ordenesTrabajo, Date fechaInicio)*/
 	
-	@SuppressWarnings("deprecation")
+
 	@Test
 	@DisplayName("Caso de prueba Inicializar 0067 - Introducir todos los argumentos correctos")
 	void testInicializar_67() {
@@ -77,13 +77,18 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		ArrayList<String> material = new ArrayList<>();
 		material.add("Metal");
 		material.add("Bombillas");
+		
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 8);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
 
-		Presupuesto presEsperado = new Presupuesto(123, "Eléctricas Pepe", 5000.0, new Date(2021,12,31), 80, material, 10);
+		Presupuesto presEsperado = new Presupuesto(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10);
 		
 		//Act
 		Presupuesto presReal = null;
 		try {
-			presReal = sub.inicializar(123, "Eléctricas Pepe", 5000.0, new Date(2021,12,31), 80, material, 10, 12345);
+			presReal = sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345);
 		} catch (CustomException e) {
 			e.printStackTrace();
 		}
@@ -105,7 +110,6 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	@DisplayName("Caso de prueba Inicializar 0069 - Introducir identificador de OT inexistente")
 	void testInicializar_69() {
@@ -113,17 +117,20 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		ArrayList<String> material = new ArrayList<>();
 		material.add("Metal");
 		material.add("Bombillas");
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 8);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, new Date(2021,12,31), 80, material, 10, 1234));
+				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 1234));
 
 		assertEquals(4, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("NotFound, OT desconocida", e.getMessage(), "Mensaje de excepcion incorrecto");
 	}
 	
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	@DisplayName("Caso de prueba Inicializar 0070 - Introducir identificador repetido")
 	void testInicializar_70() {
@@ -131,23 +138,26 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		ArrayList<String> material = new ArrayList<>();
 		material.add("Metal");
 		material.add("Bombillas");
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 8);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
 		
 		//todo revisar esto
 		try {
-			sub.inicializar(123, "Eléctricas Pepe", 5000.0, new Date(2021,12,31), 80, material, 10, 12345);
+			sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345);
 		} catch (CustomException e1) {
 			e1.printStackTrace();
 		}
 
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, new Date(2021,12,31), 80, material, 10, 12345));
+				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345));
 
 		assertEquals(2, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Id Presupuesto ya registrado", e.getMessage(), "Mensaje de excepcion incorrecto");	
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	@DisplayName("Caso de prueba Inicializar 0071 - Introducir identificador negativo")
 	void testInicializar_71() {
@@ -155,18 +165,21 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		ArrayList<String> material = new ArrayList<>();
 		material.add("Metal");
 		material.add("Bombillas");
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 8);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
 		//todo
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(-123, "Eléctricas Pepe", 5000.0, new Date(2021,12,31), 80, material, 10, 12345));
+				() -> sub.inicializar(-123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345));
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Campos nulos", e.getMessage(), "Mensaje de excepcion incorrecto");
 
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	@DisplayName("Caso de prueba Inicializar 0072 - Introducir empresa de más de 100 caracteres")
 	void testInicializar_72() {
@@ -174,18 +187,21 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		ArrayList<String> material = new ArrayList<>();
 		material.add("Metal");
 		material.add("Bombillas");
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 8);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
 				() -> sub.inicializar(123, "Eléctricas Pepeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-						5000.0, new Date(2021,12,31), 80, material, 10, 12345));
+						5000.0, fechaSis.getTime(), 80, material, 10, 12345));
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		//todo el mensaje de error está mal escrito
 		assertEquals("Identificador negativo", e.getMessage(), "Mensaje de excepcion incorrecto");
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	@DisplayName("Caso de prueba Inicializar 0073 - Introducir presupuesto negativo")
 	void testInicializar_73() {
@@ -193,10 +209,14 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		ArrayList<String> material = new ArrayList<>();
 		material.add("Metal");
 		material.add("Bombillas");
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 8);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(123, "Eléctricas Pepe", -5000.0, new Date(2021,12,31), 80, material, 10, 12345));
+				() -> sub.inicializar(123, "Eléctricas Pepe", -5000.0, fechaSis.getTime(), 80, material, 10, 12345));
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		//todo el mensaje de error está mal escrito
@@ -204,6 +224,113 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 	}
 	
 	
+	/****************************************************************************************************/
+	@Test
+	@Tag("Disabled")
+	@DisplayName("Caso de prueba Inicializar 0074 - Introducir fecha con formato incorrecto")
+	void testInicializar_74() {
+		//Arrange
+		ArrayList<String> material = new ArrayList<>();
+		material.add("Metal");
+		material.add("Bombillas");
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 8);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
+		
+		//Assert
+		CustomException e = assertThrows(CustomException.class,
+				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345));
+
+		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
+		//todo
+		assertEquals(" ", e.getMessage(), "Mensaje de excepcion incorrecto");
+	}
 	
+	@Test
+	@DisplayName("Caso de prueba Inicializar 0075 - Introducir fecha anterior a la actual")
+	void testInicializar_75() {
+		//Arrange
+		ArrayList<String> material = new ArrayList<>();
+		material.add("Metal");
+		material.add("Bombillas");
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 3);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
+		
+		//Assert
+		CustomException e = assertThrows(CustomException.class,
+				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345));
+
+		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
+		assertEquals("Fecha erronea", e.getMessage(), "Mensaje de excepcion incorrecto");
+	}
 	
+	@Test
+	@DisplayName("Caso de prueba Inicializar 0076 - Introducir duración negativa")
+	void testInicializar_76() {
+		//Arrange
+		ArrayList<String> material = new ArrayList<>();
+		material.add("Metal");
+		material.add("Bombillas");
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 8);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
+		
+		//Assert
+		CustomException e = assertThrows(CustomException.class,
+				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), -80, material, 10, 12345));
+
+		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
+		//nombre excepción mal escrito
+		assertEquals("Identificador negativo", e.getMessage(), "Mensaje de excepcion incorrecto");
+	}
+	
+	@Test
+	@DisplayName("Caso de prueba Inicializar 0077 - Introducir ArrayList material vacío")
+	void testInicializar_77() {
+		//Arrange
+		ArrayList<String> material = new ArrayList<>();
+		
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 8);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
+
+		Presupuesto presEsperado = new Presupuesto(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10);
+		
+		//Act
+		Presupuesto presReal = null;
+		try {
+			presReal = sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345);
+		} catch (CustomException e) {
+			e.printStackTrace();
+		}
+		
+		//Assert
+		assertEquals(presEsperado, presReal, "Error al inicializar Presupuesto");
+	}
+	
+	@Test
+	@DisplayName("Caso de prueba Inicializar 0078 - Introducir personal negativo")
+	void testInicializar_78() {
+		//Arrange
+		ArrayList<String> material = new ArrayList<>();
+		material.add("Metal");
+		material.add("Bombillas");
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 8);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
+		
+		//Assert
+		CustomException e = assertThrows(CustomException.class,
+				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, -10, 12345));
+
+		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
+		//nombre excepción mal escrito
+		assertEquals("Identificador negativo", e.getMessage(), "Mensaje de excepcion incorrecto");
+	}
 }
