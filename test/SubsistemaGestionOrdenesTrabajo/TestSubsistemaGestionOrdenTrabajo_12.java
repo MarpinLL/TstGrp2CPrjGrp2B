@@ -6,7 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class SubsistemaGestionOrdenTrabajoTest {
+class TestSubsistemaGestionOrdenTrabajo_12 {
 
 	@BeforeEach
 	void setUp() throws Exception {
