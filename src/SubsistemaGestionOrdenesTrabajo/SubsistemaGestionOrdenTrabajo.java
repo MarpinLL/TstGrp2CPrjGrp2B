@@ -262,6 +262,7 @@ public class SubsistemaGestionOrdenTrabajo implements InterfaceSubsistemaGestion
 			if(filtro.getPresupuesto()!=null)
 				fPresupuesto = false;
 			if(filtro.getCoste()!=null)
+				System.out.println("jeje");
 				fCoste = true;
 			if(filtro.getResponsable()!=null)
 				fResponsable = true;
@@ -384,6 +385,7 @@ public class SubsistemaGestionOrdenTrabajo implements InterfaceSubsistemaGestion
 			}
 		}
 		if(fCoste) {
+			//TODO
 			if(candidata.getCoste()!=null && candidata.getCoste()!=filtro.getCoste())
 				return false;
 		}
@@ -412,7 +414,7 @@ public class SubsistemaGestionOrdenTrabajo implements InterfaceSubsistemaGestion
 			if(candidata.getProceso()!=null && !candidata.getPresupuesto().equals(filtro.getProceso()))
 				return false;
 		}
-		
+		System.out.println("cumple coste " + candidata.getCoste() + " " + filtro.getCoste());
 		return true;
 	}
 	 
