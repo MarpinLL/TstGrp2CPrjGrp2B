@@ -20,6 +20,7 @@ import Model.OrdenTrabajo;
 import Model.Presupuesto;
 import Model.Proceso;
 
+@DisplayName("Pruebas sobre Crear Orden de Trabajo")
 class TestSubsistemaGestionOrdenTrabajo_14 {
 	
 	private static SubsistemaGestionOrdenTrabajo sub;
@@ -62,7 +63,7 @@ class TestSubsistemaGestionOrdenTrabajo_14 {
 	
 
 	@Test
-	@DisplayName("Caso de prueba Inicializar 0079 - Introducir una Orden de Trabajo nula")
+	@DisplayName("Caso de prueba Crear 0079 - Introducir una Orden de Trabajo nula")
 	void testInicializar_79() {
 		
 		//Assert
@@ -74,7 +75,7 @@ class TestSubsistemaGestionOrdenTrabajo_14 {
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba Inicializar 0080 - Introducir argumentos obligatorios")
+	@DisplayName("Caso de prueba Crear 0080 - Introducir argumentos obligatorios")
 	void testInicializar_80() {
 		//Arrange		
 		OrdenTrabajo otEsperada = new OrdenTrabajo(123, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
@@ -97,7 +98,7 @@ class TestSubsistemaGestionOrdenTrabajo_14 {
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba Inicializar 0081 - Introducir todos los argumentos")
+	@DisplayName("Caso de prueba Crear 0081 - Introducir todos los argumentos")
 	void testInicializar_81() {
 		//Arrange
 		ArrayList<String> material = new ArrayList<>();
@@ -132,7 +133,7 @@ class TestSubsistemaGestionOrdenTrabajo_14 {
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba Inicializar 0082 - Introducir identificador OT ya existente")
+	@DisplayName("Caso de prueba Crear 0082 - Introducir identificador OT ya existente")
 	void testInicializar_82() {
 		//Arrange
 		ArrayList<String> material = new ArrayList<>();
@@ -160,7 +161,7 @@ class TestSubsistemaGestionOrdenTrabajo_14 {
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba Inicializar 0083 - Introducir presupuestos")
+	@DisplayName("Caso de prueba Crear 0083 - Introducir presupuestos")
 	void testInicializar_83() {
 		//Arrange
 		ArrayList<String> material = new ArrayList<>();
@@ -192,7 +193,7 @@ class TestSubsistemaGestionOrdenTrabajo_14 {
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba Inicializar 0084 - Introducir fecha anterior a la actual")
+	@DisplayName("Caso de prueba Crear 0084 - Introducir fecha anterior a la actual")
 	void testInicializar_84() {
 		//Arrange
 		ArrayList<String> material = new ArrayList<>();

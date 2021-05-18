@@ -209,7 +209,7 @@ public class SubsistemaGestionOrdenTrabajo implements InterfaceSubsistemaGestion
 		}else if(this.OTs.get(ordenTrabajo.getIdentificador()).getPresupuesto().size()<3) {
 			throw new CustomException("La OT no presenta el mínimo de 3 presupuestos para la selección", 3);
 		}
-		
+
 		//Comprobamos presupuesto
 		if(presupuesto==null) {
 			throw new CustomException("Presupuesto nulo", 1);

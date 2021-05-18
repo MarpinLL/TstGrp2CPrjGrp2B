@@ -18,6 +18,7 @@ import Model.OrdenTrabajo;
 import Model.Presupuesto;
 import Model.Proceso;
 
+@DisplayName("Pruebas sobre Inicializar Orden Trabajo")
 class TestSubsistemaGestionOrdenTrabajo_12 {
 	
 	private static SubsistemaGestionOrdenTrabajo sub;
