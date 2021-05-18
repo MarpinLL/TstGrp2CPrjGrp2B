@@ -54,19 +54,6 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 		sub = null;
 	}
 	
-	/*public OrdenTrabajo(Integer identificador, String descripcion, 
-	ArrayList<String> material, ArrayList<Presupuesto> presupuesto,
-	Double coste, String responsable, Integer personal, Date fechaInicio, Integer duracion, 
-	String estado, Proceso proceso)*/
-
-	/*public Presupuesto(Integer identificador, String empresa, Double presupuesto, Date fechaInicio, Integer duracion,
-			ArrayList<String> material, Integer personal)*/
-	
-	/*public Proceso(Integer identificador, String nombreProceso, String descripcion, 
-			Double coste, Double estimado, String estado, String responsable, String servicio, 
-			ArrayList<Incidencia> incidencias, ArrayList<OrdenTrabajo> ordenesTrabajo, Date fechaInicio)*/
-	
-
 	@Test
 	@DisplayName("Caso de prueba Asignar 0085 - Introducir OT y Presupuesto con campos obligatorios")
 	void testInicializar_85() {
