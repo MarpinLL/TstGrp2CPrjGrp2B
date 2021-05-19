@@ -60,39 +60,42 @@ class TestSubsistemaGestionIncidencias_02 {
 	@Test
 	@DisplayName("CP-0022 Introducir un null")
 	void testCrear_02() throws CustomException {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.crear(null);
-		}, "No salta la excepcion");
+		CustomException e;
 
+		e = assertThrows(CustomException.class, () -> subsistemaGestionIncidencias.crear(null),
+				"No salta la excepcion");
+
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
 	}
 
 	@Test
 	@DisplayName("CP-0023 Introducir identificador repetido")
 	void testCrear_03() throws CustomException {
+		CustomException e;
 		Incidencia incidencia = new Incidencia();
 		incidencia.setIdentificador(1);
 		incidencia.setFechaInicio(new Date());
 
 		subsistemaGestionIncidencias.crear(incidencia);
 
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.crear(incidencia);
-		}, "No salta la excepcion");
+		e = assertThrows(CustomException.class, () -> subsistemaGestionIncidencias.crear(incidencia),
+				"No salta la excepcion");
 
+		assertEquals(2, e.codigo, "Codigo de excepcion erroneo");
 	}
 
 	@Test
 	@DisplayName("CP-0023 Introducir fechaInicio < hoy")
 	void testCrear_04() throws CustomException {
+		CustomException e;
 		Incidencia incidencia = new Incidencia();
 		incidencia.setIdentificador(1);
 		incidencia.setFechaInicio(new GregorianCalendar(1995, Calendar.OCTOBER, 27).getTime());
 
+		e = assertThrows(CustomException.class, () -> subsistemaGestionIncidencias.crear(incidencia),
+				"No salta la excepcion");
 
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.crear(incidencia);
-		}, "No salta la excepcion");
-
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
 	}
 
 }

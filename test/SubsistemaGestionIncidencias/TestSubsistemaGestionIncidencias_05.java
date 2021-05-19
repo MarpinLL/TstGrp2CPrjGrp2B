@@ -38,7 +38,7 @@ class TestSubsistemaGestionIncidencias_05 {
 	}
 
 	@Test
-	@DisplayName("CP-0029 Llamar a obtenerIncidenciasSinAsignar() con incidencias sin asignar almacenadas")
+	@DisplayName("CP-0030 Llamar a obtenerIncidenciasSinAsignar() con incidencias sin asignar almacenadas")
 	void testObtenerIncidenciaSinAsignar_01() throws CustomException {
 		Incidencia filtro = new Incidencia();
 		filtro.setNombreCiudadano("Ciudadano");
@@ -69,16 +69,18 @@ class TestSubsistemaGestionIncidencias_05 {
 
 		for (Incidencia i : subsistemaGestionIncidencias.obtenerIncidenciaSinAsignar()) {
 			assertNull(i.getProceso(), "La incidencia está asignada");
-			System.out.println(i.getProceso());
 		}
 
 	}
 
 	@Test
-	@DisplayName("CP-0028 Introducir un null")
+	@DisplayName("CP-0031 Llamar a obtenerIncidenciasSinAsignar() con incidencias sin asignar no almacenadasl")
 	void testObtenerIncidenciaSinAsignar_02() throws CustomException {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.obtenerIncidenciaSinAsignar();
-		}, "No salta la excepcion");
+		CustomException e;
+
+		e = assertThrows(CustomException.class, () -> subsistemaGestionIncidencias.obtenerIncidenciaSinAsignar(),
+				"No salta la excepcion");
+
+		assertEquals(4, e.codigo, "Codigo de excepcion erroneo");
 	}
 }

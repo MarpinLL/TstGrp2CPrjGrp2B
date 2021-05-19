@@ -51,8 +51,8 @@ class TestSubsistemaGestionIncidencias_01 {
 
 		Incidencia incidenciaActual = null;
 
-		incidenciaActual = subsistemaGestionIncidencias.inicializar(0, "ciudadano", "53199271H",
-				"34608564255", "descripción de prueba", "localización de prueba", "Otra", null, new Date());
+		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
+				"descripción de prueba", "localización de prueba", "Otra", null, new Date());
 
 		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
 	}
@@ -72,99 +72,135 @@ class TestSubsistemaGestionIncidencias_01 {
 	@Test
 	@DisplayName("CP-0003 Introducir identificador negativo")
 	void testInicializar_03() {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.inicializar(-1, "ciudadano", "53199271H", "34608564255",
-					"descripción de prueba", "localización de prueba", "Otra", null, new Date());
-		}, "No salta la excepcion");
+		CustomException e;
+
+		e = assertThrows(CustomException.class,
+				() -> subsistemaGestionIncidencias.inicializar(-1, "ciudadano", "53199271H", "34608564255",
+						"descripción de prueba", "localización de prueba", "Otra", null, new Date()),
+				"No salta la excepcion");
+
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
 	}
 
 	@Test
 	@DisplayName("CP-0004 Introducir nombre ciudadano no alfabetico")
 	void testInicializar_04() {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.inicializar(1, "ciudadano1", "53199271H", "34608564255",
-					"descripción de prueba", "localización de prueba", "Otra", null, new Date());
-		}, "No salta la excepcion");
+		CustomException e;
+
+		e = assertThrows(CustomException.class,
+				() -> subsistemaGestionIncidencias.inicializar(1, "ciudadano1", "53199271H", "34608564255",
+						"descripción de prueba", "localización de prueba", "Otra", null, new Date()),
+				"No salta la excepcion");
+
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
 	}
 
 	@Test
 	@DisplayName("CP-0005 Introducir nombre ciudadano > 100")
 	void testInicializar_05() {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.inicializar(1,
-					"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-					"53199271H", "34608564255", "descripción de prueba", "localización de prueba", "Otra", null,
-					new Date());
-		}, "No salta la excepcion");
+		CustomException e;
+
+		e = assertThrows(CustomException.class, () -> subsistemaGestionIncidencias.inicializar(1,
+				"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+				"53199271H", "34608564255", "descripción de prueba", "localización de prueba", "Otra", null,
+				new Date()), "No salta la excepcion");
+
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
 	}
 
 	@Test
 	@DisplayName("CP-0006 Introducir DNI con formato incorrecto")
 	void testInicializar_06() {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "531992719", "34608564255",
-					"descripción de prueba", "localización de prueba", "Otra", null, new Date());
-		}, "No salta la excepcion");
+		CustomException e;
+
+		e = assertThrows(CustomException.class,
+				() -> subsistemaGestionIncidencias.inicializar(1, "ciudadano", "531992719", "34608564255",
+						"descripción de prueba", "localización de prueba", "Otra", null, new Date()),
+				"No salta la excepcion");
+
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
 	}
 
 	@Test
 	@DisplayName("CP-0007 Introducir DNI > 9")
 	void testInicializar_07() {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "513199271H", "34608564255",
-					"descripción de prueba", "localización de prueba", "Otra", null, new Date());
-		}, "No salta la excepcion");
+		CustomException e;
+
+		e = assertThrows(CustomException.class,
+				() -> subsistemaGestionIncidencias.inicializar(1, "ciudadano", "513199271H", "34608564255",
+						"descripción de prueba", "localización de prueba", "Otra", null, new Date()),
+				"No salta la excepcion");
+
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
+
 	}
 
 	@Test
 	@DisplayName("CP-0008 Introducir telefono sin prefijo")
 	void testInicializar_08() {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "608564255", "descripción de prueba",
-					"localización de prueba", "Otra", null, new Date());
-		}, "No salta la excepcion");
+		CustomException e;
+
+		e = assertThrows(CustomException.class,
+				() -> subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "608564255",
+						"descripción de prueba", "localización de prueba", "Otra", null, new Date()),
+				"No salta la excepcion");
+
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
 	}
 
 	@Test
 	@DisplayName("CP-0009 Introducir telefono con caracteres no numericos")
 	void testInicializar_09() {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "3460a564255",
-					"descripción de prueba", "localización de prueba", "Otra", null, new Date());
-		}, "No salta la excepcion");
+		CustomException e;
+
+		e = assertThrows(CustomException.class,
+				() -> subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "3460a564255",
+						"descripción de prueba", "localización de prueba", "Otra", null, new Date()),
+				"No salta la excepcion");
+
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
 	}
 
 	@Test
 	@DisplayName("CP-0010 Introducir telefono > 15")
 	void testInicializar_10() {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "3460856425512341",
-					"descripción de prueba", "localización de prueba", "Otra", null, new Date());
-		}, "No salta la excepcion");
+		CustomException e;
+
+		e = assertThrows(CustomException.class,
+				() -> subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "3460856425512341",
+						"descripción de prueba", "localización de prueba", "Otra", null, new Date()),
+				"No salta la excepcion");
+
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
 	}
 
 	@Test
 	@DisplayName("CP-0011 Introducir descripcion > 240")
 	void testInicializar_11() {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-					"aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa "
-							+ "aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa "
-							+ "aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa",
-					"localización de prueba", "Otra", null, new Date());
-		}, "No salta la excepcion");
+		CustomException e;
+
+		e = assertThrows(CustomException.class, () -> subsistemaGestionIncidencias.inicializar(1, "ciudadano",
+				"53199271H", "34608564255",
+				"aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa "
+						+ "aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa "
+						+ "aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa",
+				"localización de prueba", "Otra", null, new Date()), "No salta la excepcion");
+
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
 	}
 
 	@Test
 	@DisplayName("CP-0012 Introducir localización > 150")
 	void testInicializar_12() {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-					"descripción de prueba",
-					"aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa "
-							+ "aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa",
-					"Otra", null, new Date());
-		}, "No salta la excepcion");
+		CustomException e;
+
+		e = assertThrows(CustomException.class, () -> subsistemaGestionIncidencias.inicializar(1, "ciudadano",
+				"53199271H", "34608564255", "descripción de prueba",
+				"aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa "
+						+ "aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa",
+				"Otra", null, new Date()), "No salta la excepcion");
+
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
 	}
 
 	@Test
@@ -290,11 +326,14 @@ class TestSubsistemaGestionIncidencias_01 {
 	@Test
 	@DisplayName("CP-0019 Introducir tipoIncidencia no valido")
 	void testInicializar_19() {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-					"descripción de prueba", "localización de prueba", "qwerty", null, new Date());
-		}, "No salta la excepcion");
+		CustomException e;
+
+		e = assertThrows(CustomException.class,
+				() -> subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
+						"descripción de prueba", "localización de prueba", "qwerty", null, new Date()),
+				"No salta la excepcion");
+
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
 	}
 
-	
 }

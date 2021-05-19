@@ -61,9 +61,12 @@ class TestSubsistemaGestionIncidencias_03 {
 	@Test
 	@DisplayName("CP-0026 Introducir un null")
 	void testActualizar_02() throws CustomException {
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.actualizar(null);
-		}, "No salta la excepcion");
+		CustomException e;
+
+		e = assertThrows(CustomException.class, () -> subsistemaGestionIncidencias.actualizar(null),
+				"No salta la excepcion");
+
+		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
 	}
 
 }
