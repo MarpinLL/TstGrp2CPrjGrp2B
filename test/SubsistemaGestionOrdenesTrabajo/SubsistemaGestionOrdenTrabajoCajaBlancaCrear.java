@@ -158,7 +158,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
 
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(filtro));
+				() -> sub.crear(filtro), "No salta la excepcion");
 
 		assertEquals(2, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Id ya registrado", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -185,7 +185,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Asignada", p);
 
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(filtro));
+				() -> sub.crear(filtro), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("El estado no puede ser distinto de Pendiente deasignación", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -213,7 +213,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
 
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(filtro));
+				() -> sub.crear(filtro), "No salta la excepcion");
 
 		assertEquals(2, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Id ya registrado", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -244,7 +244,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 				mat, pres, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
 
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(filtro));
+				() -> sub.crear(filtro), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("No se pueden incorporar presupuestos en la creación", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -271,7 +271,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Asignada", p);
 
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(filtro));
+				() -> sub.crear(filtro), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("El estado no puede ser distinto de Pendiente deasignación", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -298,7 +298,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, null, p);
 
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(filtro));
+				() -> sub.crear(filtro), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Faltan campos Obligatorios {id, descripcion ,estado}", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -324,7 +324,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, null, p);
 
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(filtro));
+				() -> sub.crear(filtro), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Faltan campos Obligatorios {id, descripcion ,estado}", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -350,7 +350,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, null, p);
 
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(filtro));
+				() -> sub.crear(filtro), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Faltan campos Obligatorios {id, descripcion ,estado}", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -366,7 +366,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(filtro));
+				() -> sub.crear(filtro), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("OT con todos los campos nulos", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -380,7 +380,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(filtro));
+				() -> sub.crear(filtro), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("OT nula", e.getMessage(), "Mensaje de excepcion incorrecto");

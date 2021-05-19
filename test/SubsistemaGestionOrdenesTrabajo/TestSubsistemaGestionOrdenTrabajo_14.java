@@ -138,7 +138,7 @@ class TestSubsistemaGestionOrdenTrabajo_14 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(otParametro));
+				() -> sub.crear(otParametro), "No salta la excepcion");
 
 		assertEquals(2, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Id ya registrado", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -170,7 +170,7 @@ class TestSubsistemaGestionOrdenTrabajo_14 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(otParametro));
+				() -> sub.crear(otParametro), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("No se pueden incorporar presupuestos en la creación", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -199,7 +199,7 @@ class TestSubsistemaGestionOrdenTrabajo_14 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(otParametro));
+				() -> sub.crear(otParametro), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Fecha errónea", e.getMessage(), "Mensaje de excepcion incorrecto");

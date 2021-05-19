@@ -76,7 +76,7 @@ class TestSubsistemaGestionOrdenTrabajo_16 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.gestionarRecursos(otArgumento));
+				() -> sub.gestionarRecursos(otArgumento), "No salta la excepcion");
 
 		assertEquals(4, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("OT no registrada", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -164,7 +164,7 @@ class TestSubsistemaGestionOrdenTrabajo_16 {
 		//Act
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.gestionarRecursos(otParametro));
+				() -> sub.gestionarRecursos(otParametro), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Estado no valido", e.getMessage(), "Mensaje de excepcion incorrecto");

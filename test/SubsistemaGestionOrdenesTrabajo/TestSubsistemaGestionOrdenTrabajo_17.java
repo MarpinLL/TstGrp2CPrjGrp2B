@@ -141,8 +141,6 @@ class TestSubsistemaGestionOrdenTrabajo_17 {
 		ArrayList<OrdenTrabajo> esperadas = new ArrayList<>();
 		esperadas.add(i);esperadas.add(j);
 		
-		Iterable<OrdenTrabajo> iterableEsperadas = esperadas;
-		
 		//Act
 		ArrayList<OrdenTrabajo> reales = sub.buscar(new OrdenTrabajo(null,null,null,null,null,null,null, null, null, null, null));
 		

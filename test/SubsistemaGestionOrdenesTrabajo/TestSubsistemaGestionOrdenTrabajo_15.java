@@ -125,7 +125,7 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.asignarEmpresa(null, null));
+				() -> sub.asignarEmpresa(null, null), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("OrdenTrabajo nula", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -161,7 +161,7 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.asignarEmpresa(otArgumento, presArgumento));
+				() -> sub.asignarEmpresa(otArgumento, presArgumento), "No salta la excepcion");
 
 		assertEquals(4, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Presupuesto no registrado en la OT", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -190,7 +190,7 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.asignarEmpresa(otArgumento, presArgumento));
+				() -> sub.asignarEmpresa(otArgumento, presArgumento), "No salta la excepcion");
 
 		assertEquals(3, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("La OT no presenta el mínimo de 3 presupuestos para la selección", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -224,7 +224,7 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.asignarEmpresa(otArgumento, presArgumento));
+				() -> sub.asignarEmpresa(otArgumento, presArgumento), "No salta la excepcion");
 
 		assertEquals(4, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("OT no registrada", e.getMessage(), "Mensaje de excepcion incorrecto");

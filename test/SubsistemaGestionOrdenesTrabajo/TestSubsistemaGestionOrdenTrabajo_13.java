@@ -78,7 +78,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 	
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(null, null, null, null, null, null, null, null));
+				() -> sub.inicializar(null, null, null, null, null, null, null, null), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Campos nulos", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -99,7 +99,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 1234));
+				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 1234), "No salta la excepcion");
 
 		assertEquals(4, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("NotFound, OT desconocida", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -127,7 +127,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345));
+				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345), "No salta la excepcion");
 
 		assertEquals(2, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Id Presupuesto ya registrado", e.getMessage(), "Mensaje de excepcion incorrecto");	
@@ -148,7 +148,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(-123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345));
+				() -> sub.inicializar(-123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Campos nulos", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -170,7 +170,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
 				() -> sub.inicializar(123, "Eléctricas Pepeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-						5000.0, fechaSis.getTime(), 80, material, 10, 12345));
+						5000.0, fechaSis.getTime(), 80, material, 10, 12345), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		//todo el mensaje de error está mal escrito
@@ -215,7 +215,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345));
+				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		//todo
@@ -236,7 +236,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345));
+				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Fecha erronea", e.getMessage(), "Mensaje de excepcion incorrecto");
@@ -256,7 +256,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), -80, material, 10, 12345));
+				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), -80, material, 10, 12345), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		//nombre excepción mal escrito
@@ -302,7 +302,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, -10, 12345));
+				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, -10, 12345), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		//nombre excepción mal escrito

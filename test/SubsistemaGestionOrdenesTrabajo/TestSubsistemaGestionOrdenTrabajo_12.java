@@ -131,7 +131,7 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
 				() -> sub.inicializar(-12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-						material, pres, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso));
+						material, pres, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Identificador negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
@@ -165,7 +165,7 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 						+ "Castro Se cambiarán las farolas de la Avenida Rosalía de Castro Se cambiarán las farolas de la Avenida Rosalía de Castro Se cambiarán "
 						+ "las farolas de la Avenida Rosalía de CastroSe cambiarán las farolas de la Avenida Rosalía de Castro Se cambiarán las farolas de la "
 						+ "Avenida Rosalía de Castro Se cambiarán las farolas de la Avenida Rosalía de Castro Se cambiarán las farolas de la Avenida Rosalía de Castro",
-						material, pres, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso));
+						material, pres, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Descripcion superior a 500 chars", e.getMessage(), "Mensaje de excepcion incorrecto");	
@@ -196,7 +196,7 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
 				() -> sub.inicializar(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-						material, pres, 1000.0, "Pepe1", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso));
+						material, pres, 1000.0, "Pepe1", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Responsable no alfabetico", e.getMessage(), "Mensaje de excepcion incorrecto");	
@@ -227,7 +227,7 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
 				() -> sub.inicializar(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-						material, pres, 1000.0, "Pepe", -10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso));
+						material, pres, 1000.0, "Pepe", -10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Personal negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
@@ -258,7 +258,7 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 		//Assert
 		Exception e = assertThrows(Exception.class,
 				() -> sub.inicializar(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-						material, pres, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso));
+						material, pres, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso), "No salta la excepcion");
 
 		assertEquals(1, e, "Codigo de excepcion incorrecto");
 		assertEquals("Personal negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
@@ -288,7 +288,7 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
 				() -> sub.inicializar(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-						material, pres, 1000.0, "Pepe", 10, fechaSis.getTime(), -80, "Pendiente de asignación", proceso));
+						material, pres, 1000.0, "Pepe", 10, fechaSis.getTime(), -80, "Pendiente de asignación", proceso), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Duracion negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
@@ -356,7 +356,7 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
 				() -> sub.inicializar(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-						material, pres, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Esperando", proceso));
+						material, pres, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Esperando", proceso), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Estado no válido", e.getMessage(), "Mensaje de excepcion incorrecto");
