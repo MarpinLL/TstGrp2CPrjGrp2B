@@ -24,6 +24,7 @@ import SubsistemaGestionOrdenesTrabajo.SubsistemaGestionOrdenTrabajo;
 import SubsistemaGestionProcesos.InterfaceSubsistemaGestionProcesos;
 import SubsistemaGestionProcesos.SubsistemaGestionProcesos;
 
+@DisplayName("PRU-0019 Pruebas sobre obtener estadisticas de procesos")
 class TestSubsistemaAnalisisYEstadisticas_19 {
 
 	private static SubsistemaAnalisisEstadisticas s;

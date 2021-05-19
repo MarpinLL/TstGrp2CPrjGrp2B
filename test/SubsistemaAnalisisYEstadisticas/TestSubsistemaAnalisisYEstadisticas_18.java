@@ -21,6 +21,7 @@ import SubsistemaGestionIncidencias.SubsistemaGestionIncidencias;
 import SubsistemaGestionOrdenesTrabajo.SubsistemaGestionOrdenTrabajo;
 import SubsistemaGestionProcesos.SubsistemaGestionProcesos;
 
+@DisplayName("PRU-0018 Pruebas sobre obtener estadisticas de incidencias")
 class TestSubsistemaAnalisisYEstadisticas_18 {
 
 	private static SubsistemaAnalisisEstadisticas s;
@@ -66,7 +67,7 @@ class TestSubsistemaAnalisisYEstadisticas_18 {
 	}
 
 	@Test
-	@DisplayName("Caso de prueba-0096 Argumentos correctos")
+	@DisplayName("CP-0096 Argumentos correctos")
 	void testObtenerEstadisticasIncidencias_96() {
 
 		// Arrange - Preparacion
@@ -95,7 +96,7 @@ class TestSubsistemaAnalisisYEstadisticas_18 {
 	}
 
 	@Test
-	@DisplayName("Caso de prueba-0097 Rango de fechas incorrecto")
+	@DisplayName("CP-0097 Rango de fechas incorrecto")
 	void testObtenerEstadisticasIncidencias_97() {
 
 		// Assert - Afirmación
@@ -108,7 +109,7 @@ class TestSubsistemaAnalisisYEstadisticas_18 {
 	}
 
 	@Test
-	@DisplayName("Caso de prueba-0098 Distribucion semana")
+	@DisplayName("CP-0098 Distribucion semana")
 	void testObtenerEstadisticasIncidencias_98() {
 
 		Estadistica esperado = new Estadistica();
@@ -136,7 +137,7 @@ class TestSubsistemaAnalisisYEstadisticas_18 {
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba-0099 Distribucion incorrecta")
+	@DisplayName("CP-0099 Distribucion incorrecta")
 	void testObtenerEstadisticasIncidencias_99() {
 
 		CustomException e = assertThrows(CustomException.class,
@@ -148,7 +149,7 @@ class TestSubsistemaAnalisisYEstadisticas_18 {
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba-0100 Aplicando un filtro")
+	@DisplayName("CP-0100 Aplicando un filtro")
 	void testObtenerEstadisticasIncidencias_100() {
 
 		// Arrange - Prepacion
