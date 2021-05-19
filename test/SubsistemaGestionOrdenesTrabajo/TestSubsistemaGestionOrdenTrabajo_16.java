@@ -34,9 +34,6 @@ class TestSubsistemaGestionOrdenTrabajo_16 {
 		fechaSis.set(Calendar.MONTH, 8);
 		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
 		
-		/*Proceso proceso = new Proceso(12, "Proceso 1", "Descripcion de proceso", 420.0, 230.5, 
-				"Pendiente de asignación", "Pepe", "Electricidad", new ArrayList<>(), 
-				new ArrayList<>(), fechaSis.getTime());*/
 		
 		OrdenTrabajo i = new OrdenTrabajo(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
 				null, null, null, null, null, null, null, "Pendiente de asignación", null);
@@ -62,21 +59,10 @@ class TestSubsistemaGestionOrdenTrabajo_16 {
 		sub = null;
 	}
 	
-	/*public OrdenTrabajo(Integer identificador, String descripcion, 
-	ArrayList<String> material, ArrayList<Presupuesto> presupuesto,
-	Double coste, String responsable, Integer personal, Date fechaInicio, Integer duracion, 
-	String estado, Proceso proceso)*/
-
-	/*public Presupuesto(Integer identificador, String empresa, Double presupuesto, Date fechaInicio, Integer duracion,
-			ArrayList<String> material, Integer personal)*/
-	
-	/*public Proceso(Integer identificador, String nombreProceso, String descripcion, 
-			Double coste, Double estimado, String estado, String responsable, String servicio, 
-			ArrayList<Incidencia> incidencias, ArrayList<OrdenTrabajo> ordenesTrabajo, Date fechaInicio)*/
 	
 	@Test
 	@DisplayName("Caso de prueba Gestionar Recursos 0090 - Introducir ot que no exista en el sistema")
-	void testInicializar_90() {
+	void testGestionarRecursos_90() {
 		
 		//Arrange
 
@@ -98,7 +84,7 @@ class TestSubsistemaGestionOrdenTrabajo_16 {
 	
 	@Test
 	@DisplayName("Caso de prueba Gestionar Recursos 0091 - Introducir ot con campos modificados")
-	void testInicializar_91() {
+	void testGestionarRecursos_91() {
 		
 		//Arrange
 		ArrayList<String> materialAntiguo = new ArrayList<>();
@@ -146,7 +132,7 @@ class TestSubsistemaGestionOrdenTrabajo_16 {
 	
 	@Test
 	@DisplayName("Caso de prueba Gestionar Recursos 0092 - Introducir ot sin campos modificados")
-	void testInicializar_92() {
+	void testGestionarRecursos_92() {
 		
 		//Arrange
 		ArrayList<String> materialAntiguo = new ArrayList<>();

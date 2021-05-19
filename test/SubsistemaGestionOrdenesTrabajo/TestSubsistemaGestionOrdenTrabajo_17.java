@@ -65,7 +65,7 @@ class TestSubsistemaGestionOrdenTrabajo_17 {
 	
 	@Test
 	@DisplayName("Caso de prueba Buscar 0093 - Introducir ot null para encontrar todas las OT")
-	void testInicializar_93() {
+	void testBuscar_93() {
 		
 		//Arrange
 		ArrayList<String> material = new ArrayList<>();
@@ -105,7 +105,7 @@ class TestSubsistemaGestionOrdenTrabajo_17 {
 
 	@Test
 	@DisplayName("Caso de prueba Buscar 0094 - Introducir ot con todos los campos a null")
-	void testInicializar_94() {
+	void testBuscar_94() {
 		
 		//Arrange
 		ArrayList<String> materialAntiguo = new ArrayList<>();
@@ -153,7 +153,7 @@ class TestSubsistemaGestionOrdenTrabajo_17 {
 	
 	@Test
 	@DisplayName("Caso de prueba Buscar 0094 - Introducir ot con algunos campos cubiertos")
-	void testInicializar_95() {
+	void testBuscar_95() {
 		
 		//Arrange
 		ArrayList<String> materialAntiguo = new ArrayList<>();

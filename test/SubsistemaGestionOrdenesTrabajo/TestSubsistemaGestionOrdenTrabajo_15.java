@@ -56,7 +56,7 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 	
 	@Test
 	@DisplayName("Caso de prueba Asignar 0085 - Introducir OT y Presupuesto con campos obligatorios")
-	void testInicializar_85() {
+	void testAsignarEmpresa_85() {
 		
 		//Arrange
 		ArrayList<String> material = new ArrayList<>();
@@ -105,7 +105,7 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 	
 	@Test
 	@DisplayName("Caso de prueba Asignar 0086 - Introducir argumentos nulos")
-	void testInicializar_86() {
+	void testAsignarEmpresa_86() {
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
@@ -117,7 +117,7 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 	
 	@Test
 	@DisplayName("Caso de prueba Asignar 0087 - Introducir presupuesto que no estaba almacenado")
-	void testInicializar_87() {
+	void testAsignarEmpresa_87() {
 		
 		//Arrange
 		ArrayList<String> material = new ArrayList<>();
@@ -153,7 +153,7 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 	
 	@Test
 	@DisplayName("Caso de prueba Asignar 0088 - Introducir ot y presupuesto sin que haya 3 almacenados")
-	void testInicializar_88() {
+	void testAsignarEmpresa_88() {
 		
 		//Arrange
 		ArrayList<String> material = new ArrayList<>();
@@ -182,7 +182,7 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 	
 	@Test
 	@DisplayName("Caso de prueba Asignar 0089 - Introducir ot que no exista en el sistema")
-	void testInicializar_89() {
+	void testAsignarEmpresa_89() {
 		
 		//Arrange
 		ArrayList<String> material = new ArrayList<>();

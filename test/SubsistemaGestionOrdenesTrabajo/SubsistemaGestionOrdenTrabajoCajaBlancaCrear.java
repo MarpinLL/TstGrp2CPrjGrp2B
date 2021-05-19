@@ -45,176 +45,344 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		sub = null;
 	}
 	
-	/*public OrdenTrabajo(Integer identificador, String descripcion, 
-	ArrayList<String> material, ArrayList<Presupuesto> presupuesto,
-	Double coste, String responsable, Integer personal, Date fechaInicio, Integer duracion, 
-	String estado, Proceso proceso)*/
-
-	/*public Presupuesto(Integer identificador, String empresa, Double presupuesto, Date fechaInicio, Integer duracion,
-			ArrayList<String> material, Integer personal)*/
-	
-	/*public Proceso(Integer identificador, String nombreProceso, String descripcion, 
-			Double coste, Double estimado, String estado, String responsable, String servicio, 
-			ArrayList<Incidencia> incidencias, ArrayList<OrdenTrabajo> ordenesTrabajo, Date fechaInicio)*/
-	
-
-	@Test
-	@DisplayName("Caso de prueba Crear 0079 - Introducir una Orden de Trabajo nula")
-	void testInicializar_79() {
-		
-		//Assert
-		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(null));
-
-		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
-		assertEquals("OT nula", e.getMessage(), "Mensaje de excepcion incorrecto");
-	}
 	
 	@Test
-	@DisplayName("Caso de prueba Crear 0080 - Introducir argumentos obligatorios")
-	void testInicializar_80() {
-		//Arrange		
-		OrdenTrabajo otEsperada = new OrdenTrabajo(123, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-				null, null, null, null, null, null, null, "Pendiente de asignación", null);
+	@DisplayName("Camino 1")
+	void testCajaBlancaBuscar_1() {
 		
-		OrdenTrabajo otParametro = new OrdenTrabajo(123, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-				null, null, null, null, null, null, null, "Pendiente de asignación", null);
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 4);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 21);
 		
+		Proceso p = new Proceso();
+		p.setIdentificador(1);
 		
-		//Act
-		OrdenTrabajo otReal = null;
+		OrdenTrabajo esperado = new OrdenTrabajo(231456, "Reparar farola", 
+				null, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
+
+		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
+				null, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
+
+		OrdenTrabajo real = null;
 		try {
-			otReal = sub.crear(otParametro);
+			real = sub.crear(filtro);
 		} catch (CustomException e) {
 			e.printStackTrace();
 		}
-		
-		//Assert
-		assertEquals(otEsperada, otReal, "Error al crear ot");
+		assertEquals(esperado, real,"Resultado incorrecto");
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba Crear 0081 - Introducir todos los argumentos")
-	void testInicializar_81() {
-		//Arrange
-		ArrayList<String> material = new ArrayList<>();
-		material.add("Metal");
-		material.add("Bombillas");
+	@DisplayName("Camino 2")
+	void testCajaBlancaBuscar_2() {
+		
 		Calendar fechaSis = Calendar.getInstance();
 		fechaSis.set(Calendar.YEAR, 2021);
-		fechaSis.set(Calendar.MONTH, 8);
-		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
+		fechaSis.set(Calendar.MONTH, 4);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 21);
 		
-		Proceso proceso = new Proceso(12, "Proceso 1", "Descripcion de proceso", 420.0, 230.5, 
-				"Pendiente de asignación", "Pepe", "Electricidad", new ArrayList<>(), 
-				new ArrayList<>(), fechaSis.getTime());
+		ArrayList<String> mat = new ArrayList<>();
+		mat.add("Metal");
+		mat.add("Bombillas");	
 		
-		OrdenTrabajo otEsperada = new OrdenTrabajo(123, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-				material, null, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso);
+		Proceso p = new Proceso();
+		p.setIdentificador(1);
 		
-		OrdenTrabajo otParametro = new OrdenTrabajo(123, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-				material, null, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso);
-		
-		
-		//Act
-		OrdenTrabajo otReal = null;
+		OrdenTrabajo esperado = new OrdenTrabajo(231456, "Reparar farola", 
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
+
+		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
+
+		OrdenTrabajo real = null;
 		try {
-			otReal = sub.crear(otParametro);
+			real = sub.crear(filtro);
 		} catch (CustomException e) {
 			e.printStackTrace();
 		}
-		
-		//Assert
-		assertEquals(otEsperada, otReal, "Error al crear ot");
+		assertEquals(esperado, real,"Resultado incorrecto");
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba Crear 0082 - Introducir identificador OT ya existente")
-	void testInicializar_82() {
-		//Arrange
-		ArrayList<String> material = new ArrayList<>();
-		material.add("Metal");
-		material.add("Bombillas");
+	@DisplayName("Camino 3")
+	void testCajaBlancaBuscar_3() {
+		
 		Calendar fechaSis = Calendar.getInstance();
 		fechaSis.set(Calendar.YEAR, 2021);
-		fechaSis.set(Calendar.MONTH, 8);
-		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
+		fechaSis.set(Calendar.MONTH, 4);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 21);
 		
-		Proceso proceso = new Proceso(12, "Proceso 1", "Descripcion de proceso", 420.0, 230.5, 
-				"Pendiente de asignación", "Pepe", "Electricidad", new ArrayList<>(), 
-				new ArrayList<>(), fechaSis.getTime());
+		ArrayList<String> mat = new ArrayList<>();
+		mat.add("Metal");
+		mat.add("Bombillas");	
 		
+		Proceso p = new Proceso();
+		p.setIdentificador(1);
 		
-		OrdenTrabajo otParametro = new OrdenTrabajo(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-				material, null, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso);
+		OrdenTrabajo esperado = new OrdenTrabajo(231456, "Reparar farola", 
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
+
+		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
+
+		OrdenTrabajo real = null;
+		try {
+			real = sub.crear(filtro);
+		} catch (CustomException e) {
+			e.printStackTrace();
+		}
+		assertEquals(esperado, real,"Resultado incorrecto");
+	}
+	
+	@Test
+	@DisplayName("Camino 4")
+	void testCajaBlancaBuscar_4() {
 		
-		//Assert
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 4);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 21);
+		
+		ArrayList<String> mat = new ArrayList<>();
+		mat.add("Metal");
+		mat.add("Bombillas");	
+		
+		Proceso p = new Proceso();
+		p.setIdentificador(1);
+		
+		OrdenTrabajo filtro = new OrdenTrabajo(12345, "Reparar farola", 
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
+
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(otParametro));
+				() -> sub.crear(filtro));
 
 		assertEquals(2, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Id ya registrado", e.getMessage(), "Mensaje de excepcion incorrecto");
+	
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba Crear 0083 - Introducir presupuestos")
-	void testInicializar_83() {
-		//Arrange
-		ArrayList<String> material = new ArrayList<>();
-		material.add("Metal");
-		material.add("Bombillas");
+	@DisplayName("Camino 5")
+	void testCajaBlancaBuscar_5() {
+		
 		Calendar fechaSis = Calendar.getInstance();
 		fechaSis.set(Calendar.YEAR, 2021);
-		fechaSis.set(Calendar.MONTH, 3);
-		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
-		ArrayList<Presupuesto> pres = new ArrayList<>();
-		Presupuesto c1 = new Presupuesto(1, "Pepe Electricas", 350.0, fechaSis.getTime(), 2, material, 2);
-		pres.add(c1);
+		fechaSis.set(Calendar.MONTH, 4);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 21);
 		
+		ArrayList<String> mat = new ArrayList<>();
+		mat.add("Metal");
+		mat.add("Bombillas");	
 		
-		Proceso proceso = new Proceso(12, "Proceso 1", "Descripcion de proceso", 420.0, 230.5, 
-				"Pendiente de asignación", "Pepe", "Electricidad", new ArrayList<>(), 
-				new ArrayList<>(), fechaSis.getTime());
-		
-		
-		OrdenTrabajo otParametro = new OrdenTrabajo(123, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-				material, pres, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso);
-		
-		//Assert
+		Proceso p = new Proceso();
+		p.setIdentificador(1);
+
+		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Asignada", p);
+
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(otParametro));
+				() -> sub.crear(filtro));
+
+		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
+		assertEquals("El estado no puede ser distinto de Pendiente deasignación", e.getMessage(), "Mensaje de excepcion incorrecto");
+	
+	}
+	
+	//TODO ESTO ESTÁ MAL AUNQUE SE EJECUTE BIEN, LA COBERTURA NO ES LA QUE QUEREMOS
+	@Test
+	@DisplayName("Camino 6")
+	void testCajaBlancaBuscar_6() {
+		
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 4);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 21);
+		
+		ArrayList<String> mat = new ArrayList<>();
+		mat.add("Metal");
+		mat.add("Bombillas");	
+		
+		Proceso p = new Proceso();
+		p.setIdentificador(1);
+
+		OrdenTrabajo filtro = new OrdenTrabajo(12345, "Reparar farola",
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
+
+		CustomException e = assertThrows(CustomException.class,
+				() -> sub.crear(filtro));
+
+		assertEquals(2, e.codigo, "Codigo de excepcion incorrecto");
+		assertEquals("Id ya registrado", e.getMessage(), "Mensaje de excepcion incorrecto");
+	
+	}
+	
+	@Test
+	@DisplayName("Camino 7")
+	void testCajaBlancaBuscar_7() {
+		
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 4);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 21);
+		
+		ArrayList<String> mat = new ArrayList<>();
+		mat.add("Metal");
+		mat.add("Bombillas");	
+		
+		Proceso p = new Proceso();
+		p.setIdentificador(1);
+		
+		Presupuesto ps = new Presupuesto(1, "Empresa", 20.0, fechaSis.getTime(), 2, mat, 5);
+
+		ArrayList<Presupuesto> pres = new ArrayList<>();
+		pres.add(ps);
+
+		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
+				mat, pres, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
+
+		CustomException e = assertThrows(CustomException.class,
+				() -> sub.crear(filtro));
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("No se pueden incorporar presupuestos en la creación", e.getMessage(), "Mensaje de excepcion incorrecto");
+	
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba Crear 0084 - Introducir fecha anterior a la actual")
-	void testInicializar_84() {
-		//Arrange
-		ArrayList<String> material = new ArrayList<>();
-		material.add("Metal");
-		material.add("Bombillas");
+	@DisplayName("Camino 8")
+	void testCajaBlancaBuscar_8() {
+		
 		Calendar fechaSis = Calendar.getInstance();
 		fechaSis.set(Calendar.YEAR, 2021);
-		fechaSis.set(Calendar.MONTH, 3);
-		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
+		fechaSis.set(Calendar.MONTH, 4);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 21);
 		
+		ArrayList<String> mat = new ArrayList<>();
+		mat.add("Metal");
+		mat.add("Bombillas");	
 		
-		Proceso proceso = new Proceso(12, "Proceso 1", "Descripcion de proceso", 420.0, 230.5, 
-				"Pendiente de asignación", "Pepe", "Electricidad", new ArrayList<>(), 
-				new ArrayList<>(), fechaSis.getTime());
+		Proceso p = new Proceso();
+		p.setIdentificador(1);
+
+		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Asignado", p);
+
+		CustomException e = assertThrows(CustomException.class,
+				() -> sub.crear(filtro));
+
+		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
+		assertEquals("El estado no puede ser distinto de Pendiente deasignación", e.getMessage(), "Mensaje de excepcion incorrecto");
+	
+	}
+	
+	@Test
+	@DisplayName("Camino 9")
+	void testCajaBlancaBuscar_9() {
 		
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 4);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 21);
 		
-		OrdenTrabajo otParametro = new OrdenTrabajo(123, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-				material, null, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso);
+		ArrayList<String> mat = new ArrayList<>();
+		mat.add("Metal");
+		mat.add("Bombillas");	
+		
+		Proceso p = new Proceso();
+		p.setIdentificador(1);
+
+		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, null, p);
+
+		CustomException e = assertThrows(CustomException.class,
+				() -> sub.crear(filtro));
+
+		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
+		assertEquals("Faltan campos Obligatorios {id, descripcion ,estado}", e.getMessage(), "Mensaje de excepcion incorrecto");
+	}
+	
+	@Test
+	@DisplayName("Camino 10")
+	void testCajaBlancaBuscar_10() {
+		
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 4);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 21);
+		
+		ArrayList<String> mat = new ArrayList<>();
+		mat.add("Metal");
+		mat.add("Bombillas");	
+		
+		Proceso p = new Proceso();
+		p.setIdentificador(1);
+
+		OrdenTrabajo filtro = new OrdenTrabajo(231456, null, 
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, null, p);
+
+		CustomException e = assertThrows(CustomException.class,
+				() -> sub.crear(filtro));
+
+		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
+		assertEquals("Faltan campos Obligatorios {id, descripcion ,estado}", e.getMessage(), "Mensaje de excepcion incorrecto");
+	}
+	
+	@Test
+	@DisplayName("Camino 11")
+	void testCajaBlancaBuscar_11() {
+		
+		Calendar fechaSis = Calendar.getInstance();
+		fechaSis.set(Calendar.YEAR, 2021);
+		fechaSis.set(Calendar.MONTH, 4);
+		fechaSis.set(Calendar.DAY_OF_MONTH, 21);
+		
+		ArrayList<String> mat = new ArrayList<>();
+		mat.add("Metal");
+		mat.add("Bombillas");	
+		
+		Proceso p = new Proceso();
+		p.setIdentificador(1);
+
+		OrdenTrabajo filtro = new OrdenTrabajo(null, null, 
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, null, p);
+
+		CustomException e = assertThrows(CustomException.class,
+				() -> sub.crear(filtro));
+
+		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
+		assertEquals("Faltan campos Obligatorios {id, descripcion ,estado}", e.getMessage(), "Mensaje de excepcion incorrecto");
+	
+	}
+	
+	@Test
+	@DisplayName("Camino 12")
+	void testCajaBlancaBuscar_12() {
+
+		OrdenTrabajo filtro = new OrdenTrabajo(null, null, 
+				null, null, null, null, null, null, null, null, null);
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
-				() -> sub.crear(otParametro));
+				() -> sub.crear(filtro));
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
-		assertEquals("Fecha errónea", e.getMessage(), "Mensaje de excepcion incorrecto");
+		assertEquals("OT con todos los campos nulos", e.getMessage(), "Mensaje de excepcion incorrecto");
 	}
 	
+	@Test
+	@DisplayName("Camino 13")
+	void testCajaBlancaBuscar_13() {
+
+		OrdenTrabajo filtro = null;
+
+		//Assert
+		CustomException e = assertThrows(CustomException.class,
+				() -> sub.crear(filtro));
+
+		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
+		assertEquals("OT nula", e.getMessage(), "Mensaje de excepcion incorrecto");
+
+	
+	}
 }

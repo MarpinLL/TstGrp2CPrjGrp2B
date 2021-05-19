@@ -29,22 +29,10 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 	void setUp() throws Exception {
 		sub = new SubsistemaGestionOrdenTrabajo();
 		
-		/*ArrayList<String> material = new ArrayList<>();
-		material.add("Metal");
-		material.add("Bombillas");*/
-		
 		Calendar fechaSis = Calendar.getInstance();
 		fechaSis.set(Calendar.YEAR, 2021);
 		fechaSis.set(Calendar.MONTH, 8);
 		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
-		
-		/*ArrayList<Presupuesto> pres = new ArrayList<>();
-		Presupuesto c1 = new Presupuesto(1, "Pepe Electricas", 350.0, fechaSis.getTime(), 2, material, 2);
-		pres.add(c1);*/
-		
-		/*Proceso proceso = new Proceso(12, "Proceso 1", "Descripcion de proceso", 420.0, 230.5, 
-				"Pendiente de asignación", "Pepe", "Electricidad", new ArrayList<>(), 
-				new ArrayList<>(), fechaSis.getTime());*/
 		
 		OrdenTrabajo i = new OrdenTrabajo(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
 				new ArrayList<>(), new ArrayList<>(), 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", null);
