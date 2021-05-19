@@ -2,9 +2,7 @@ package SubsistemaGestionIncidencias;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -16,8 +14,8 @@ import org.junit.jupiter.api.Test;
 import Exception.CustomException;
 import Model.Incidencia;
 
-@DisplayName("PRU-0002 Pruebas sobre creación de incidencias")
-class TestSubsistemaGestionIncidencias_02 {
+@DisplayName("PRU-0003 Pruebas sobre actualización de incidencias")
+class TestSubsistemaGestionIncidencias_03 {
 	private SubsistemaGestionIncidencias subsistemaGestionIncidencias;
 
 	@BeforeAll
@@ -26,7 +24,6 @@ class TestSubsistemaGestionIncidencias_02 {
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-
 	}
 
 	@BeforeEach
@@ -40,8 +37,8 @@ class TestSubsistemaGestionIncidencias_02 {
 	}
 
 	@Test
-	@DisplayName("CP-0021 Introducir una Incidencia válida")
-	void testCrear_01() throws CustomException {
+	@DisplayName("CP-0025 Introducir una Incidencia válida")
+	void testActualizar_01() throws CustomException {
 		Incidencia incidenciaEsperada = new Incidencia();
 		incidenciaEsperada.setIdentificador(1);
 		incidenciaEsperada.setNombreCiudadano("Ciudadano");
@@ -52,44 +49,21 @@ class TestSubsistemaGestionIncidencias_02 {
 		incidenciaEsperada.setTipoIncidencia("Otra");
 		incidenciaEsperada.setFechaInicio(new Date());
 
-		Incidencia incidenciaActual = subsistemaGestionIncidencias.crear(incidenciaEsperada);
+		subsistemaGestionIncidencias.crear(incidenciaEsperada);
+
+		incidenciaEsperada.setNombreCiudadano("Marcos");
+
+		Incidencia incidenciaActual = subsistemaGestionIncidencias.actualizar(incidenciaEsperada);
 
 		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
 	}
 
 	@Test
-	@DisplayName("CP-0022 Introducir un null")
-	void testCrear_02() throws CustomException {
-		assertNull(subsistemaGestionIncidencias.crear(null), "La incidencia creada no es null");
-	}
-
-	@Test
-	@DisplayName("CP-0023 Introducir identificador repetido")
-	void testCrear_03() throws CustomException {
-		Incidencia incidencia = new Incidencia();
-		incidencia.setIdentificador(1);
-		incidencia.setFechaInicio(new Date());
-
-		subsistemaGestionIncidencias.crear(incidencia);
-
+	@DisplayName("CP-0026 Introducir un null")
+	void testActualizar_02() throws CustomException {
 		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.crear(incidencia);
+			subsistemaGestionIncidencias.actualizar(null);
 		}, "No salta la excepcion");
-
-	}
-
-	@Test
-	@DisplayName("CP-0023 Introducir fechaInicio < hoy")
-	void testCrear_04() throws CustomException {
-		Incidencia incidencia = new Incidencia();
-		incidencia.setIdentificador(1);
-		incidencia.setFechaInicio(new GregorianCalendar(1995, Calendar.OCTOBER, 27).getTime());
-
-
-		assertThrows(CustomException.class, () -> {
-			subsistemaGestionIncidencias.crear(incidencia);
-		}, "No salta la excepcion");
-
 	}
 
 }
