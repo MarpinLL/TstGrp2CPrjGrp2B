@@ -2,7 +2,7 @@ package SubsistemaGestionIncidencias;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -17,19 +17,13 @@ import Model.Incidencia;
 @DisplayName("PRU-0001 Pruebas sobre inicialización de incidencias")
 class TestSubsistemaGestionIncidencias_01 {
 	private SubsistemaGestionIncidencias subsistemaGestionIncidencias;
-	private static Calendar fecha;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		fecha = Calendar.getInstance();
-		fecha.set(Calendar.YEAR, 2021);
-		fecha.set(Calendar.MONTH, 3);
-		fecha.set(Calendar.DAY_OF_MONTH, 22);
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		fecha = null;
 	}
 
 	@BeforeEach
@@ -53,11 +47,12 @@ class TestSubsistemaGestionIncidencias_01 {
 		incidenciaEsperada.setDescripcion("descripción de prueba");
 		incidenciaEsperada.setLocalizacion("localización de prueba");
 		incidenciaEsperada.setTipoIncidencia("Otra");
+		incidenciaEsperada.setFechaInicio(new Date());
 
 		Incidencia incidenciaActual = null;
 
-		incidenciaActual = subsistemaGestionIncidencias.inicializar(0, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Otra", null, fecha.getTime());
+		incidenciaActual = subsistemaGestionIncidencias.inicializar(0, "ciudadano", "53199271H",
+				"34608564255", "descripción de prueba", "localización de prueba", "Otra", null, new Date());
 
 		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
 	}
@@ -79,7 +74,7 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_03() {
 		assertThrows(CustomException.class, () -> {
 			subsistemaGestionIncidencias.inicializar(-1, "ciudadano", "53199271H", "34608564255",
-					"descripción de prueba", "localización de prueba", "Otra", null, fecha.getTime());
+					"descripción de prueba", "localización de prueba", "Otra", null, new Date());
 		}, "No salta la excepcion");
 	}
 
@@ -88,7 +83,7 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_04() {
 		assertThrows(CustomException.class, () -> {
 			subsistemaGestionIncidencias.inicializar(1, "ciudadano1", "53199271H", "34608564255",
-					"descripción de prueba", "localización de prueba", "Otra", null, fecha.getTime());
+					"descripción de prueba", "localización de prueba", "Otra", null, new Date());
 		}, "No salta la excepcion");
 	}
 
@@ -99,7 +94,7 @@ class TestSubsistemaGestionIncidencias_01 {
 			subsistemaGestionIncidencias.inicializar(1,
 					"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 					"53199271H", "34608564255", "descripción de prueba", "localización de prueba", "Otra", null,
-					fecha.getTime());
+					new Date());
 		}, "No salta la excepcion");
 	}
 
@@ -108,7 +103,7 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_06() {
 		assertThrows(CustomException.class, () -> {
 			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "531992719", "34608564255",
-					"descripción de prueba", "localización de prueba", "Otra", null, fecha.getTime());
+					"descripción de prueba", "localización de prueba", "Otra", null, new Date());
 		}, "No salta la excepcion");
 	}
 
@@ -117,7 +112,7 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_07() {
 		assertThrows(CustomException.class, () -> {
 			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "513199271H", "34608564255",
-					"descripción de prueba", "localización de prueba", "Otra", null, fecha.getTime());
+					"descripción de prueba", "localización de prueba", "Otra", null, new Date());
 		}, "No salta la excepcion");
 	}
 
@@ -126,7 +121,7 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_08() {
 		assertThrows(CustomException.class, () -> {
 			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "608564255", "descripción de prueba",
-					"localización de prueba", "Otra", null, fecha.getTime());
+					"localización de prueba", "Otra", null, new Date());
 		}, "No salta la excepcion");
 	}
 
@@ -135,7 +130,7 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_09() {
 		assertThrows(CustomException.class, () -> {
 			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "3460a564255",
-					"descripción de prueba", "localización de prueba", "Otra", null, fecha.getTime());
+					"descripción de prueba", "localización de prueba", "Otra", null, new Date());
 		}, "No salta la excepcion");
 	}
 
@@ -144,7 +139,7 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_10() {
 		assertThrows(CustomException.class, () -> {
 			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "3460856425512341",
-					"descripción de prueba", "localización de prueba", "Otra", null, fecha.getTime());
+					"descripción de prueba", "localización de prueba", "Otra", null, new Date());
 		}, "No salta la excepcion");
 	}
 
@@ -156,7 +151,7 @@ class TestSubsistemaGestionIncidencias_01 {
 					"aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa "
 							+ "aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa "
 							+ "aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa",
-					"localización de prueba", "Otra", null, fecha.getTime());
+					"localización de prueba", "Otra", null, new Date());
 		}, "No salta la excepcion");
 	}
 
@@ -168,7 +163,7 @@ class TestSubsistemaGestionIncidencias_01 {
 					"descripción de prueba",
 					"aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa "
 							+ "aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa",
-					"Otra", null, fecha.getTime());
+					"Otra", null, new Date());
 		}, "No salta la excepcion");
 	}
 
@@ -187,7 +182,7 @@ class TestSubsistemaGestionIncidencias_01 {
 		Incidencia incidenciaActual = null;
 
 		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Iluminación", null, fecha.getTime());
+				"descripción de prueba", "localización de prueba", "Iluminación", null, new Date());
 
 		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
 	}
@@ -207,7 +202,7 @@ class TestSubsistemaGestionIncidencias_01 {
 		Incidencia incidenciaActual = null;
 
 		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Parques", null, fecha.getTime());
+				"descripción de prueba", "localización de prueba", "Parques", null, new Date());
 
 		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
 	}
@@ -227,7 +222,7 @@ class TestSubsistemaGestionIncidencias_01 {
 		Incidencia incidenciaActual = null;
 
 		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Asfalto", null, fecha.getTime());
+				"descripción de prueba", "localización de prueba", "Asfalto", null, new Date());
 
 		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
 	}
@@ -247,7 +242,7 @@ class TestSubsistemaGestionIncidencias_01 {
 		Incidencia incidenciaActual = null;
 
 		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Alcantarillado", null, fecha.getTime());
+				"descripción de prueba", "localización de prueba", "Alcantarillado", null, new Date());
 
 		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
 	}
@@ -267,7 +262,7 @@ class TestSubsistemaGestionIncidencias_01 {
 		Incidencia incidenciaActual = null;
 
 		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Tráfico", null, fecha.getTime());
+				"descripción de prueba", "localización de prueba", "Tráfico", null, new Date());
 
 		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
 	}
@@ -287,7 +282,7 @@ class TestSubsistemaGestionIncidencias_01 {
 		Incidencia incidenciaActual = null;
 
 		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Suministro", null, fecha.getTime());
+				"descripción de prueba", "localización de prueba", "Suministro", null, new Date());
 
 		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
 	}
@@ -297,7 +292,7 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_19() {
 		assertThrows(CustomException.class, () -> {
 			subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-					"descripción de prueba", "localización de prueba", "qwerty", null, fecha.getTime());
+					"descripción de prueba", "localización de prueba", "qwerty", null, new Date());
 		}, "No salta la excepcion");
 	}
 
