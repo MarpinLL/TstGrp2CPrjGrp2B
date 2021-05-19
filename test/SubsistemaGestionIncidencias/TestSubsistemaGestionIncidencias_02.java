@@ -60,7 +60,10 @@ class TestSubsistemaGestionIncidencias_02 {
 	@Test
 	@DisplayName("CP-0022 Introducir un null")
 	void testCrear_02() throws CustomException {
-		assertNull(subsistemaGestionIncidencias.crear(null), "La incidencia creada no es null");
+		assertThrows(CustomException.class, () -> {
+			subsistemaGestionIncidencias.crear(null);
+		}, "No salta la excepcion");
+
 	}
 
 	@Test
