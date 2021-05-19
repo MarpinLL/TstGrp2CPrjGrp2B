@@ -70,7 +70,10 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		} catch (CustomException e) {
 			e.printStackTrace();
 		}
+		
+		//TODO
 		assertEquals(esperado, real,"Resultado incorrecto");
+			
 	}
 	
 	@Test

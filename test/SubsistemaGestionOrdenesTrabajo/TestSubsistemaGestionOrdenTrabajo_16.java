@@ -127,7 +127,7 @@ class TestSubsistemaGestionOrdenTrabajo_16 {
 		}
 		
 		//Assert
-		assertEquals(otEsperada, otReal, "Error al inicializar ot");
+		assertEquals(otEsperada, otReal, "Error al gestionar recursos");
 	}
 	
 	@Test

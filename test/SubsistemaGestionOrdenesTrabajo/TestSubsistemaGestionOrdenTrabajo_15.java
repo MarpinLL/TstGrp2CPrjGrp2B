@@ -24,6 +24,9 @@ import Model.Proceso;
 class TestSubsistemaGestionOrdenTrabajo_15 {
 	
 	private static SubsistemaGestionOrdenTrabajo sub;
+	private Presupuesto c1 = new Presupuesto();
+	private Presupuesto c2 = new Presupuesto();
+	
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -44,8 +47,8 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 		material.add("Bombillas");
 		
 		//se inicializan solo dos para el caso de prueba en el que no hay 3 inicializadas
-		Presupuesto c1 = sub.inicializar(123, "Pepe Electricas", 350.0, fechaSis.getTime(), 4, material, 2, 12345);
-		Presupuesto c2 = sub.inicializar(234, "Paco Electricas", 450.0, fechaSis.getTime(), 2, material, 4, 12345);
+		c1 = sub.inicializar(123, "Pepe Electricas", 350.0, fechaSis.getTime(), 4, material, 2, 12345);
+		c2 = sub.inicializar(234, "Paco Electricas", 450.0, fechaSis.getTime(), 2, material, 4, 12345);
 		
 	}
 
@@ -67,10 +70,7 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 		fechaSis.set(Calendar.YEAR, 2021);
 		fechaSis.set(Calendar.MONTH, 9);
 		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
-		
-		//estos son los dos presupuestos que ya están en la OT
-		Presupuesto c1 = new Presupuesto(123, "Pepe Electricas", 350.0, fechaSis.getTime(), 4, material, 2);
-		Presupuesto c2 = new Presupuesto(234, "Paco Electricas", 450.0, fechaSis.getTime(), 2, material, 4);
+
 		
 		//creamos un tercer presupuesto para esa orden de trabajo, para que se cumpla la condición
 		//este presupuesto es el que se pone como argumento del método asignarEmpresa
@@ -78,12 +78,14 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 		try {
 			presArgumento = sub.inicializar(345, "Pepa Electricas", 550.0, fechaSis.getTime(), 2, material, 4, 12345);
 		} catch (CustomException e1) {
+			//todo metodo fail
 			e1.printStackTrace();
 		}
 		
-		ArrayList<Presupuesto> presupuestos = new ArrayList<>();
-		presupuestos.add(c1); presupuestos.add(c2); presupuestos.add(presArgumento);
 		
+		ArrayList<Presupuesto> presupuestos = new ArrayList<>();
+		//c1 y c2 son los ya inicializados
+		presupuestos.add(c1); presupuestos.add(c2); presupuestos.add(presArgumento);
 		
 		OrdenTrabajo otEsperada = new OrdenTrabajo(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
 				material, presupuestos, 550.0, "Pepa Electricas", 4, fechaSis.getTime(), 2, "Asignada", null);
@@ -99,8 +101,22 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 			e.printStackTrace();
 		}
 		
+		//TODO
+		//assertDoesNotThrow(() -> sub.asignarEmpresa(otArgumento, presArgumento), "Lanza excepción CustomException");
+		
 		//Assert
-		assertEquals(otEsperada, otReal, "Error al asignar empresa");
+		//assertEquals(otEsperada, otReal, "Error al asignar empresa");
+		
+		final OrdenTrabajo realFinal = otReal;
+		
+		//TODO
+		
+		assertAll(
+				() -> {assertEquals(otEsperada.getIdentificador(), realFinal.getIdentificador(), "Identificador distinto");},
+				() -> {assertEquals(otEsperada.getDescripcion(), realFinal.getDescripcion(), "Descripción distinta");}//,
+				/*() -> {assertEquals(otEsperada, realFinal.getDescripcion(), "Descripción distinta");}
+				() -> {assertEquals(otEsperada.getDescripcion(), realFinal.getDescripcion(), "Descripción distinta");}*/
+				);
 	}
 	
 	@Test

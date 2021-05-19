@@ -69,7 +69,24 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 		}
 		
 		//Assert
-		assertEquals(otEsperada, otReal, "Error al inicializar ot");
+		//assertEquals(otEsperada, otReal, "Error al inicializar ot");
+		final OrdenTrabajo realFinal = otReal;
+		assertAll(
+				() -> {assertEquals(otEsperada.getIdentificador(), realFinal.getIdentificador(), "Identificador distinto");},
+				() -> {assertEquals(otEsperada.getDescripcion(), realFinal.getDescripcion(), "Descripción distinta");},
+				() -> {assertEquals(otEsperada.getCoste(), realFinal.getCoste(), "Coste distinto");},
+				() -> {assertEquals(otEsperada.getEstado(), realFinal.getEstado(), "Estado distinto");},
+				() -> {assertEquals(otEsperada.getResponsable(), realFinal.getResponsable(), "Responsable distinto");},
+				() -> {assertEquals(otEsperada.getPersonal(), realFinal.getPersonal(), "Personal distinto");},
+				() -> {assertEquals(otEsperada.getDuracion(), realFinal.getDuracion(), "Duracion distinta");},
+				() -> {assertEquals(otEsperada.getFechaInicio(), realFinal.getFechaInicio(), "Fecha inicio distinta");},
+				() -> {assertEquals(otEsperada.getProceso().getIdentificador(), 
+						realFinal.getProceso().getIdentificador(), "Proceso distinto");},
+				() -> {assertEquals(otEsperada.getProceso().getDescripcion(),
+						realFinal.getProceso().getDescripcion(), "Proceso distinto");},
+				() -> {assertEquals(otEsperada.getProceso().getNombre(),
+						realFinal.getProceso().getNombre(), "Proceso distinto");}
+				);
 	}
 	
 	@Test
