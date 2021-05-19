@@ -118,7 +118,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -144,7 +144,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -170,7 +170,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -196,7 +196,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -237,7 +237,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -278,7 +278,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -320,7 +320,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -361,7 +361,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -402,7 +402,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -443,7 +443,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -484,7 +484,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -512,7 +512,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -538,7 +538,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -591,7 +591,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
@@ -634,7 +634,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(null);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
+		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
 		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
 		
 	}
