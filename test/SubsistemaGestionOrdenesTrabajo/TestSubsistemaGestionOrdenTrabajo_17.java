@@ -152,7 +152,7 @@ class TestSubsistemaGestionOrdenTrabajo_17 {
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba Buscar 0094 - Introducir ot con algunos campos cubiertos")
+	@DisplayName("Caso de prueba Buscar 0095 - Introducir ot con algunos campos cubiertos")
 	void testBuscar_95() {
 		
 		//Arrange

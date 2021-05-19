@@ -59,10 +59,10 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		p.setIdentificador(1);
 		
 		OrdenTrabajo esperado = new OrdenTrabajo(231456, "Reparar farola", 
-				null, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
+				null, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
 
 		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
-				null, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
+				null, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
 
 		OrdenTrabajo real = null;
 		try {
@@ -70,7 +70,10 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		} catch (CustomException e) {
 			e.printStackTrace();
 		}
+		
+		//TODO
 		assertEquals(esperado, real,"Resultado incorrecto");
+			
 	}
 	
 	@Test
@@ -90,10 +93,10 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		p.setIdentificador(1);
 		
 		OrdenTrabajo esperado = new OrdenTrabajo(231456, "Reparar farola", 
-				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
 
 		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
-				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
 
 		OrdenTrabajo real = null;
 		try {
@@ -189,7 +192,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 	
 	}
 	
-	//TODO ESTO ESTÁ MAL AUNQUE SE EJECUTE BIEN, LA COBERTURA NO ES LA QUE QUEREMOS
+	//AUNQUE SE EJECUTE BIEN, LA COBERTURA NO ES LA QUE QUEREMOS
 	@Test
 	@DisplayName("Camino 6")
 	void testCajaBlancaBuscar_6() {
@@ -214,7 +217,6 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 
 		assertEquals(2, e.codigo, "Codigo de excepcion incorrecto");
 		assertEquals("Id ya registrado", e.getMessage(), "Mensaje de excepcion incorrecto");
-	
 	}
 	
 	@Test
@@ -266,7 +268,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		p.setIdentificador(1);
 
 		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
-				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Asignado", p);
+				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Asignada", p);
 
 		CustomException e = assertThrows(CustomException.class,
 				() -> sub.crear(filtro));
