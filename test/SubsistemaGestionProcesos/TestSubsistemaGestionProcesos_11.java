@@ -55,7 +55,7 @@ class TestSubsistemaGestionProcesos_11 {
 	
 	@Test
 	@DisplayName("Caso de prueba AsignarIncidencia 0052 - Introducir Argumentos correctos")
-	void testAsignarOrdenTrabajo_52() {
+	void testAsignarIncidencia_52() {
 		Proceso esperado = new Proceso();
 		esperado.setIdentificador(1);
 		esperado.setNombre("proceso-1");
@@ -102,56 +102,56 @@ class TestSubsistemaGestionProcesos_11 {
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba AsignarIncidencia 0048 - Introducir Proceso null")
-	void testAsignarOrdenTrabajo_48() {
-		ArrayList<OrdenTrabajo> ordenes = new ArrayList<OrdenTrabajo>();
-		ordenes.add(o1);
-		ordenes.add(o2);
-		ordenes.add(o3);
+	@DisplayName("Caso de prueba AsignarIncidencia 0053 - Introducir Proceso null")
+	void testAsignarIncidencia_53() {
+		ArrayList<Incidencia> incidencias = new ArrayList<Incidencia>();
+		incidencias.add(i1);
+		incidencias.add(i2);
+		incidencias.add(i3);
 		
 		CustomException ex = assertThrows(CustomException.class, () -> {
-			sub.asignarOrdenTrabajo(null, ordenes);
-		}, "Introducir proceso null CP-0048: Las ordenes se han asignado incorrectamente");
+			sub.asignarIncidencia(null, incidencias);
+		}, "Introducir proceso null CP-0053: Las incidencias se han asignado incorrectamente");
 		
-		assertEquals(1, ex.codigo, "Introducir proceso null CP-0048: Las ordenes se han asignado incorrectamente");
+		assertEquals(1, ex.codigo, "Introducir proceso null CP-0053: Las incidencias se han asignado incorrectamente");
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba AsignarOrdenTrabajo 0049 - Introducir Ordenes vacías")
-	void testAsignarOrdenTrabajo_49() {
-		ArrayList<OrdenTrabajo> ordenes = new ArrayList<OrdenTrabajo>();
+	@DisplayName("Caso de prueba AsignarIncidencia 0054 - Introducir incidencias vacías")
+	void testAsignarIncidencia_54() {
+		ArrayList<Incidencia> incidencias = new ArrayList<Incidencia>();
 		
 		CustomException ex = assertThrows(CustomException.class, () -> {
-			sub.asignarOrdenTrabajo(original, ordenes);
-		}, "Introducir proceso null CP-0049: Las ordenes se han asignado incorrectamente");
+			sub.asignarIncidencia(original, incidencias);
+		}, "Introducir proceso null CP-0054: Las incidencias se han asignado incorrectamente");
 		
-		assertEquals(1, ex.codigo, "Introducir proceso null CP-0049: Las ordenes se han asignado incorrectamente");
+		assertEquals(1, ex.codigo, "Introducir incidencias vacias CP-0054: Las incidencias se han asignado incorrectamente");
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba AsignarOrdenTrabajo 0050 - Introducir Ordenes null")
-	void testAsignarOrdenTrabajo_50() {
+	@DisplayName("Caso de prueba AsignarIncidencia 0055 - Introducir incidencias null")
+	void testAsignarIncidencia_55() {
 		CustomException ex = assertThrows(CustomException.class, () -> {
-			sub.asignarOrdenTrabajo(original, null);
-		}, "Introducir proceso null CP-0050: Las ordenes se han asignado incorrectamente");
+			sub.asignarIncidencia(original, null);
+		}, "Introducir proceso null CP-0055: Las incidencias se han asignado incorrectamente");
 		
-		assertEquals(1, ex.codigo, "Introducir proceso null CP-0050: Las ordenes se han asignado incorrectamente");
+		assertEquals(1, ex.codigo, "Introducir incidencias null CP-0055: Las incidencias se han asignado incorrectamente");
 	}
 	
 	@Test
-	@DisplayName("Caso de prueba AsignarOrdenTrabajo 0051 - Introducir Ordenes repetidas")
-	void testAsignarOrdenTrabajo_51() {
-		ArrayList<OrdenTrabajo> ordenes = new ArrayList<OrdenTrabajo>();
-		ordenes.add(o1);
-		ordenes.add(o2);
-		ordenes.add(o3);
+	@DisplayName("Caso de prueba AsignarIncidencia 0056 - Introducir incidencias repetidas")
+	void testAsignarIncidencia_56() {
+		ArrayList<Incidencia> incidencias = new ArrayList<Incidencia>();
+		incidencias.add(i1);
+		incidencias.add(i2);
+		incidencias.add(i3);
 		
 		CustomException ex = assertThrows(CustomException.class, () -> {
-			sub.asignarOrdenTrabajo(original, ordenes);
-			sub.asignarOrdenTrabajo(original, ordenes);
-		}, "Introducir proceso null CP-0051: Las ordenes se han asignado incorrectamente");
+			sub.asignarIncidencia(original, incidencias);
+			sub.asignarIncidencia(original, incidencias);
+		}, "Introducir proceso null CP-0056: Las incidencias se han asignado incorrectamente");
 		
-		assertEquals(2, ex.codigo, "Introducir proceso null CP-0051: Las ordenes se han asignado incorrectamente");
+		assertEquals(2, ex.codigo, "Introducir incidencias repetidas CP-0056: Las incidencias se han asignado incorrectamente");
 	}
 
 }

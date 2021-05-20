@@ -119,7 +119,7 @@ class TestSubsistemaGestionProcesos_10 {
 			sub.asignarOrdenTrabajo(original, ordenes);
 		}, "Introducir proceso null CP-0049: Las ordenes se han asignado incorrectamente");
 		
-		assertEquals(1, ex.codigo, "Introducir proceso null CP-0049: Las ordenes se han asignado incorrectamente");
+		assertEquals(1, ex.codigo, "Introducir ordenes vacias CP-0049: Las ordenes se han asignado incorrectamente");
 	}
 	
 	@Test
@@ -129,7 +129,7 @@ class TestSubsistemaGestionProcesos_10 {
 			sub.asignarOrdenTrabajo(original, null);
 		}, "Introducir proceso null CP-0050: Las ordenes se han asignado incorrectamente");
 		
-		assertEquals(1, ex.codigo, "Introducir proceso null CP-0050: Las ordenes se han asignado incorrectamente");
+		assertEquals(1, ex.codigo, "Introducir ordenes null CP-0050: Las ordenes se han asignado incorrectamente");
 	}
 	
 	@Test
@@ -145,7 +145,7 @@ class TestSubsistemaGestionProcesos_10 {
 			sub.asignarOrdenTrabajo(original, ordenes);
 		}, "Introducir proceso null CP-0051: Las ordenes se han asignado incorrectamente");
 		
-		assertEquals(2, ex.codigo, "Introducir proceso null CP-0051: Las ordenes se han asignado incorrectamente");
+		assertEquals(2, ex.codigo, "Introducir ordenes repetidas CP-0051: Las ordenes se han asignado incorrectamente");
 	}
 
 }
