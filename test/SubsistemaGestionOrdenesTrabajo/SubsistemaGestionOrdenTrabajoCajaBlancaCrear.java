@@ -59,7 +59,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		p.setIdentificador(1);
 		
 		OrdenTrabajo esperado = new OrdenTrabajo(231456, "Reparar farola", 
-				null, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
+				new ArrayList<>(), new ArrayList<>(), 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
 
 		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
 				null, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
@@ -72,7 +72,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		}
 		
 		//TODO
-		assertEquals(esperado, real,"Resultado incorrecto");
+		assertSame(esperado, real,"Resultado incorrecto");
 			
 	}
 	
@@ -93,7 +93,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		p.setIdentificador(1);
 		
 		OrdenTrabajo esperado = new OrdenTrabajo(231456, "Reparar farola", 
-				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
+				mat, new ArrayList<>(), 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
 
 		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
 				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
@@ -124,7 +124,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		p.setIdentificador(1);
 		
 		OrdenTrabajo esperado = new OrdenTrabajo(231456, "Reparar farola", 
-				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
+				mat, new ArrayList<>(), 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
 
 		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
 				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
