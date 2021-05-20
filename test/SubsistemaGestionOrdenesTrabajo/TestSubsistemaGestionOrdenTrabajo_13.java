@@ -204,22 +204,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 	@Tag("Disabled")
 	@DisplayName("Caso de prueba Inicializar 0074 - Introducir fecha con formato incorrecto")
 	void testInicializar_74() {
-		//Arrange
-		ArrayList<String> material = new ArrayList<>();
-		material.add("Metal");
-		material.add("Bombillas");
-		Calendar fechaSis = Calendar.getInstance();
-		fechaSis.set(Calendar.YEAR, 2021);
-		fechaSis.set(Calendar.MONTH, 8);
-		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
-		
-		//Assert
-		CustomException e = assertThrows(CustomException.class,
-				() -> sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345), "No salta la excepcion");
-
-		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
-		//todo
-		assertEquals(" ", e.getMessage(), "Mensaje de excepcion incorrecto");
+		fail("No se puede ejecutar este método");
 	}
 	
 	@Test

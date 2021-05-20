@@ -67,7 +67,6 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		} catch (CustomException e) {
 			e.printStackTrace();
 		}
-		
 		assertSame(filtro, real,"Resultado incorrecto");
 			
 	}
