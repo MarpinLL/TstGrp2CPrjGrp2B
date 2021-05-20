@@ -40,8 +40,8 @@ class TestSubsistemaGestionIncidencias_01 {
 	@DisplayName("CP-0001 Introducir argumentos correctos")
 	void testInicializar_01() throws CustomException {
 		Incidencia incidenciaEsperada = new Incidencia();
-		incidenciaEsperada.setIdentificador(0);
-		incidenciaEsperada.setNombreCiudadano("Ciudadano");
+		incidenciaEsperada.setIdentificador(1);
+		incidenciaEsperada.setNombreCiudadano("ciudadano");
 		incidenciaEsperada.setDNI("53199271H");
 		incidenciaEsperada.setTelefono("34608564255");
 		incidenciaEsperada.setDescripcion("descripción de prueba");
@@ -49,24 +49,55 @@ class TestSubsistemaGestionIncidencias_01 {
 		incidenciaEsperada.setTipoIncidencia("Otra");
 		incidenciaEsperada.setFechaInicio(new Date());
 
-		Incidencia incidenciaActual = null;
+		Incidencia incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H",
+				"34608564255", "descripción de prueba", "localización de prueba", "Otra", null, new Date());
 
-		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Otra", null, new Date());
-
-		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
+		assertAll(("Las incidencias son distintas"),
+				() -> assertEquals(incidenciaEsperada.getIdentificador(), incidenciaActual.getIdentificador(),
+						"El id no coincide"),
+				() -> assertEquals(incidenciaEsperada.getNombreCiudadano(), incidenciaActual.getNombreCiudadano(),
+						"El nombre del ciudadano no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDNI(), incidenciaActual.getDNI(), "El DNI no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTelefono(), incidenciaActual.getTelefono(),
+						"El telefono no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDescripcion(), incidenciaActual.getDescripcion(),
+						"La descripcion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getLocalizacion(), incidenciaActual.getLocalizacion(),
+						"La localizacion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTipoIncidencia(), incidenciaActual.getTipoIncidencia(),
+						"El tipo no coincide"),
+				() -> assertEquals(incidenciaEsperada.getProceso(), incidenciaActual.getProceso(),
+						"El proceso no coincide"),
+				() -> assertEquals(incidenciaEsperada.getFechaInicio(), incidenciaActual.getFechaInicio(),
+						"Las fechas no coinciden"));
 	}
 
 	@Test
 	@DisplayName("CP-0002 Introducir argumentos a null")
 	void testInicializar_02() throws CustomException {
 		Incidencia incidenciaEsperada = new Incidencia();
-		Incidencia incidenciaActual = null;
 
-		incidenciaActual = subsistemaGestionIncidencias.inicializar(null, null, null, null, null, null, null, null,
-				null);
+		Incidencia incidenciaActual = subsistemaGestionIncidencias.inicializar(null, null, null, null, null, null, null,
+				null, null);
 
-		assertEquals(incidenciaEsperada, incidenciaActual, "La incidencia no tiene todos los campos a null");
+		assertAll(("Las incidencias son distintas"),
+				() -> assertEquals(incidenciaEsperada.getIdentificador(), incidenciaActual.getIdentificador(),
+						"El id no coincide"),
+				() -> assertEquals(incidenciaEsperada.getNombreCiudadano(), incidenciaActual.getNombreCiudadano(),
+						"El nombre del ciudadano no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDNI(), incidenciaActual.getDNI(), "El DNI no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTelefono(), incidenciaActual.getTelefono(),
+						"El telefono no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDescripcion(), incidenciaActual.getDescripcion(),
+						"La descripcion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getLocalizacion(), incidenciaActual.getLocalizacion(),
+						"La localizacion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTipoIncidencia(), incidenciaActual.getTipoIncidencia(),
+						"El tipo no coincide"),
+				() -> assertEquals(incidenciaEsperada.getProceso(), incidenciaActual.getProceso(),
+						"El proceso no coincide"),
+				() -> assertEquals(incidenciaEsperada.getFechaInicio(), incidenciaActual.getFechaInicio(),
+						"Las fechas no coinciden"));
 	}
 
 	@Test
@@ -208,19 +239,35 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_13() throws CustomException {
 		Incidencia incidenciaEsperada = new Incidencia();
 		incidenciaEsperada.setIdentificador(1);
-		incidenciaEsperada.setNombreCiudadano("Ciudadano");
+		incidenciaEsperada.setNombreCiudadano("ciudadano");
 		incidenciaEsperada.setDNI("53199271H");
 		incidenciaEsperada.setTelefono("34608564255");
 		incidenciaEsperada.setDescripcion("descripción de prueba");
 		incidenciaEsperada.setLocalizacion("localización de prueba");
 		incidenciaEsperada.setTipoIncidencia("Iluminación");
+		incidenciaEsperada.setFechaInicio(new Date());
 
-		Incidencia incidenciaActual = null;
+		Incidencia incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H",
+				"34608564255", "descripción de prueba", "localización de prueba", "Iluminación", null, new Date());
 
-		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Iluminación", null, new Date());
-
-		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
+		assertAll(("Las incidencias son distintas"),
+				() -> assertEquals(incidenciaEsperada.getIdentificador(), incidenciaActual.getIdentificador(),
+						"El id no coincide"),
+				() -> assertEquals(incidenciaEsperada.getNombreCiudadano(), incidenciaActual.getNombreCiudadano(),
+						"El nombre del ciudadano no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDNI(), incidenciaActual.getDNI(), "El DNI no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTelefono(), incidenciaActual.getTelefono(),
+						"El telefono no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDescripcion(), incidenciaActual.getDescripcion(),
+						"La descripcion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getLocalizacion(), incidenciaActual.getLocalizacion(),
+						"La localizacion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTipoIncidencia(), incidenciaActual.getTipoIncidencia(),
+						"El tipo no coincide"),
+				() -> assertEquals(incidenciaEsperada.getProceso(), incidenciaActual.getProceso(),
+						"El proceso no coincide"),
+				() -> assertEquals(incidenciaEsperada.getFechaInicio(), incidenciaActual.getFechaInicio(),
+						"Las fechas no coinciden"));
 	}
 
 	@Test
@@ -228,19 +275,35 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_14() throws CustomException {
 		Incidencia incidenciaEsperada = new Incidencia();
 		incidenciaEsperada.setIdentificador(1);
-		incidenciaEsperada.setNombreCiudadano("Ciudadano");
+		incidenciaEsperada.setNombreCiudadano("ciudadano");
 		incidenciaEsperada.setDNI("53199271H");
 		incidenciaEsperada.setTelefono("34608564255");
 		incidenciaEsperada.setDescripcion("descripción de prueba");
 		incidenciaEsperada.setLocalizacion("localización de prueba");
 		incidenciaEsperada.setTipoIncidencia("Parques");
+		incidenciaEsperada.setFechaInicio(new Date());
 
-		Incidencia incidenciaActual = null;
+		Incidencia incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H",
+				"34608564255", "descripción de prueba", "localización de prueba", "Parques", null, new Date());
 
-		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Parques", null, new Date());
-
-		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
+		assertAll(("Las incidencias son distintas"),
+				() -> assertEquals(incidenciaEsperada.getIdentificador(), incidenciaActual.getIdentificador(),
+						"El id no coincide"),
+				() -> assertEquals(incidenciaEsperada.getNombreCiudadano(), incidenciaActual.getNombreCiudadano(),
+						"El nombre del ciudadano no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDNI(), incidenciaActual.getDNI(), "El DNI no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTelefono(), incidenciaActual.getTelefono(),
+						"El telefono no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDescripcion(), incidenciaActual.getDescripcion(),
+						"La descripcion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getLocalizacion(), incidenciaActual.getLocalizacion(),
+						"La localizacion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTipoIncidencia(), incidenciaActual.getTipoIncidencia(),
+						"El tipo no coincide"),
+				() -> assertEquals(incidenciaEsperada.getProceso(), incidenciaActual.getProceso(),
+						"El proceso no coincide"),
+				() -> assertEquals(incidenciaEsperada.getFechaInicio(), incidenciaActual.getFechaInicio(),
+						"Las fechas no coinciden"));
 	}
 
 	@Test
@@ -248,19 +311,35 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_15() throws CustomException {
 		Incidencia incidenciaEsperada = new Incidencia();
 		incidenciaEsperada.setIdentificador(1);
-		incidenciaEsperada.setNombreCiudadano("Ciudadano");
+		incidenciaEsperada.setNombreCiudadano("ciudadano");
 		incidenciaEsperada.setDNI("53199271H");
 		incidenciaEsperada.setTelefono("34608564255");
 		incidenciaEsperada.setDescripcion("descripción de prueba");
 		incidenciaEsperada.setLocalizacion("localización de prueba");
 		incidenciaEsperada.setTipoIncidencia("Asfalto");
+		incidenciaEsperada.setFechaInicio(new Date());
 
-		Incidencia incidenciaActual = null;
+		Incidencia incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H",
+				"34608564255", "descripción de prueba", "localización de prueba", "Asfalto", null, new Date());
 
-		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Asfalto", null, new Date());
-
-		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
+		assertAll(("Las incidencias son distintas"),
+				() -> assertEquals(incidenciaEsperada.getIdentificador(), incidenciaActual.getIdentificador(),
+						"El id no coincide"),
+				() -> assertEquals(incidenciaEsperada.getNombreCiudadano(), incidenciaActual.getNombreCiudadano(),
+						"El nombre del ciudadano no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDNI(), incidenciaActual.getDNI(), "El DNI no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTelefono(), incidenciaActual.getTelefono(),
+						"El telefono no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDescripcion(), incidenciaActual.getDescripcion(),
+						"La descripcion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getLocalizacion(), incidenciaActual.getLocalizacion(),
+						"La localizacion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTipoIncidencia(), incidenciaActual.getTipoIncidencia(),
+						"El tipo no coincide"),
+				() -> assertEquals(incidenciaEsperada.getProceso(), incidenciaActual.getProceso(),
+						"El proceso no coincide"),
+				() -> assertEquals(incidenciaEsperada.getFechaInicio(), incidenciaActual.getFechaInicio(),
+						"Las fechas no coinciden"));
 	}
 
 	@Test
@@ -268,19 +347,35 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_16() throws CustomException {
 		Incidencia incidenciaEsperada = new Incidencia();
 		incidenciaEsperada.setIdentificador(1);
-		incidenciaEsperada.setNombreCiudadano("Ciudadano");
+		incidenciaEsperada.setNombreCiudadano("ciudadano");
 		incidenciaEsperada.setDNI("53199271H");
 		incidenciaEsperada.setTelefono("34608564255");
 		incidenciaEsperada.setDescripcion("descripción de prueba");
 		incidenciaEsperada.setLocalizacion("localización de prueba");
 		incidenciaEsperada.setTipoIncidencia("Alcantarillado");
+		incidenciaEsperada.setFechaInicio(new Date());
 
-		Incidencia incidenciaActual = null;
+		Incidencia incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H",
+				"34608564255", "descripción de prueba", "localización de prueba", "Alcantarillado", null, new Date());
 
-		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Alcantarillado", null, new Date());
-
-		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
+		assertAll(("Las incidencias son distintas"),
+				() -> assertEquals(incidenciaEsperada.getIdentificador(), incidenciaActual.getIdentificador(),
+						"El id no coincide"),
+				() -> assertEquals(incidenciaEsperada.getNombreCiudadano(), incidenciaActual.getNombreCiudadano(),
+						"El nombre del ciudadano no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDNI(), incidenciaActual.getDNI(), "El DNI no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTelefono(), incidenciaActual.getTelefono(),
+						"El telefono no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDescripcion(), incidenciaActual.getDescripcion(),
+						"La descripcion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getLocalizacion(), incidenciaActual.getLocalizacion(),
+						"La localizacion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTipoIncidencia(), incidenciaActual.getTipoIncidencia(),
+						"El tipo no coincide"),
+				() -> assertEquals(incidenciaEsperada.getProceso(), incidenciaActual.getProceso(),
+						"El proceso no coincide"),
+				() -> assertEquals(incidenciaEsperada.getFechaInicio(), incidenciaActual.getFechaInicio(),
+						"Las fechas no coinciden"));
 	}
 
 	@Test
@@ -288,19 +383,35 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_17() throws CustomException {
 		Incidencia incidenciaEsperada = new Incidencia();
 		incidenciaEsperada.setIdentificador(1);
-		incidenciaEsperada.setNombreCiudadano("Ciudadano");
+		incidenciaEsperada.setNombreCiudadano("ciudadano");
 		incidenciaEsperada.setDNI("53199271H");
 		incidenciaEsperada.setTelefono("34608564255");
 		incidenciaEsperada.setDescripcion("descripción de prueba");
 		incidenciaEsperada.setLocalizacion("localización de prueba");
 		incidenciaEsperada.setTipoIncidencia("Tráfico");
+		incidenciaEsperada.setFechaInicio(new Date());
 
-		Incidencia incidenciaActual = null;
+		Incidencia incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H",
+				"34608564255", "descripción de prueba", "localización de prueba", "Tráfico", null, new Date());
 
-		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Tráfico", null, new Date());
-
-		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
+		assertAll(("Las incidencias son distintas"),
+				() -> assertEquals(incidenciaEsperada.getIdentificador(), incidenciaActual.getIdentificador(),
+						"El id no coincide"),
+				() -> assertEquals(incidenciaEsperada.getNombreCiudadano(), incidenciaActual.getNombreCiudadano(),
+						"El nombre del ciudadano no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDNI(), incidenciaActual.getDNI(), "El DNI no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTelefono(), incidenciaActual.getTelefono(),
+						"El telefono no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDescripcion(), incidenciaActual.getDescripcion(),
+						"La descripcion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getLocalizacion(), incidenciaActual.getLocalizacion(),
+						"La localizacion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTipoIncidencia(), incidenciaActual.getTipoIncidencia(),
+						"El tipo no coincide"),
+				() -> assertEquals(incidenciaEsperada.getProceso(), incidenciaActual.getProceso(),
+						"El proceso no coincide"),
+				() -> assertEquals(incidenciaEsperada.getFechaInicio(), incidenciaActual.getFechaInicio(),
+						"Las fechas no coinciden"));
 	}
 
 	@Test
@@ -308,19 +419,35 @@ class TestSubsistemaGestionIncidencias_01 {
 	void testInicializar_18() throws CustomException {
 		Incidencia incidenciaEsperada = new Incidencia();
 		incidenciaEsperada.setIdentificador(1);
-		incidenciaEsperada.setNombreCiudadano("Ciudadano");
+		incidenciaEsperada.setNombreCiudadano("ciudadano");
 		incidenciaEsperada.setDNI("53199271H");
 		incidenciaEsperada.setTelefono("34608564255");
 		incidenciaEsperada.setDescripcion("descripción de prueba");
 		incidenciaEsperada.setLocalizacion("localización de prueba");
 		incidenciaEsperada.setTipoIncidencia("Suministro");
+		incidenciaEsperada.setFechaInicio(new Date());
 
-		Incidencia incidenciaActual = null;
+		Incidencia incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H",
+				"34608564255", "descripción de prueba", "localización de prueba", "Suministro", null, new Date());
 
-		incidenciaActual = subsistemaGestionIncidencias.inicializar(1, "ciudadano", "53199271H", "34608564255",
-				"descripción de prueba", "localización de prueba", "Suministro", null, new Date());
-
-		assertEquals(incidenciaEsperada, incidenciaActual, "Las incidencias no son iguales");
+		assertAll(("Las incidencias son distintas"),
+				() -> assertEquals(incidenciaEsperada.getIdentificador(), incidenciaActual.getIdentificador(),
+						"El id no coincide"),
+				() -> assertEquals(incidenciaEsperada.getNombreCiudadano(), incidenciaActual.getNombreCiudadano(),
+						"El nombre del ciudadano no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDNI(), incidenciaActual.getDNI(), "El DNI no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTelefono(), incidenciaActual.getTelefono(),
+						"El telefono no coincide"),
+				() -> assertEquals(incidenciaEsperada.getDescripcion(), incidenciaActual.getDescripcion(),
+						"La descripcion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getLocalizacion(), incidenciaActual.getLocalizacion(),
+						"La localizacion no coincide"),
+				() -> assertEquals(incidenciaEsperada.getTipoIncidencia(), incidenciaActual.getTipoIncidencia(),
+						"El tipo no coincide"),
+				() -> assertEquals(incidenciaEsperada.getProceso(), incidenciaActual.getProceso(),
+						"El proceso no coincide"),
+				() -> assertEquals(incidenciaEsperada.getFechaInicio(), incidenciaActual.getFechaInicio(),
+						"Las fechas no coinciden"));
 	}
 
 	@Test

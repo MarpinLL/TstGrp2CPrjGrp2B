@@ -61,10 +61,7 @@ class TestSubsistemaGestionOrdenTrabajo_14 {
 	@Test
 	@DisplayName("Caso de prueba Crear 0080 - Introducir argumentos obligatorios")
 	void testInicializar_80() {
-		//Arrange		
-		OrdenTrabajo otEsperada = new OrdenTrabajo(123, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-				null, null, null, null, null, null, null, "Pendiente de asignación", null);
-		
+		//Arrange
 		OrdenTrabajo otParametro = new OrdenTrabajo(123, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
 				null, null, null, null, null, null, null, "Pendiente de asignación", null);
 		
@@ -78,7 +75,7 @@ class TestSubsistemaGestionOrdenTrabajo_14 {
 		}
 		
 		//Assert
-		assertEquals(otEsperada, otReal, "Error al crear ot");
+		assertSame(otParametro, otReal, "Error al crear ot");
 	}
 	
 	@Test
@@ -97,9 +94,6 @@ class TestSubsistemaGestionOrdenTrabajo_14 {
 				"Pendiente de asignación", "Pepe", "Electricidad", new ArrayList<>(), 
 				new ArrayList<>(), fechaSis.getTime());
 		
-		OrdenTrabajo otEsperada = new OrdenTrabajo(123, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-				material, null, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso);
-		
 		OrdenTrabajo otParametro = new OrdenTrabajo(123, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
 				material, null, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso);
 		
@@ -113,7 +107,7 @@ class TestSubsistemaGestionOrdenTrabajo_14 {
 		}
 		
 		//Assert
-		assertEquals(otEsperada, otReal, "Error al crear ot");
+		assertSame(otParametro, otReal, "Error al crear ot");
 	}
 	
 	@Test

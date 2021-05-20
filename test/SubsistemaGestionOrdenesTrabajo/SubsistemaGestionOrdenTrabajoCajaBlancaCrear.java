@@ -57,9 +57,6 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		
 		Proceso p = new Proceso();
 		p.setIdentificador(1);
-		
-		OrdenTrabajo esperado = new OrdenTrabajo(231456, "Reparar farola", 
-				null, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
 
 		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
 				null, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
@@ -71,8 +68,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 			e.printStackTrace();
 		}
 		
-		//TODO
-		assertEquals(esperado, real,"Resultado incorrecto");
+		assertSame(filtro, real,"Resultado incorrecto");
 			
 	}
 	
@@ -91,9 +87,6 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		
 		Proceso p = new Proceso();
 		p.setIdentificador(1);
-		
-		OrdenTrabajo esperado = new OrdenTrabajo(231456, "Reparar farola", 
-				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
 
 		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
 				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación", p);
@@ -104,7 +97,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		} catch (CustomException e) {
 			e.printStackTrace();
 		}
-		assertEquals(esperado, real,"Resultado incorrecto");
+		assertSame(filtro, real,"Resultado incorrecto");
 	}
 	
 	@Test
@@ -122,9 +115,6 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		
 		Proceso p = new Proceso();
 		p.setIdentificador(1);
-		
-		OrdenTrabajo esperado = new OrdenTrabajo(231456, "Reparar farola", 
-				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
 
 		OrdenTrabajo filtro = new OrdenTrabajo(231456, "Reparar farola", 
 				mat, null, 5.0, "Paco meralgo", 5, fechaSis.getTime(), 2, "Pendiente de asignación",p);
@@ -135,7 +125,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaCrear {
 		} catch (CustomException e) {
 			e.printStackTrace();
 		}
-		assertEquals(esperado, real,"Resultado incorrecto");
+		assertSame(filtro, real,"Resultado incorrecto");
 	}
 	
 	@Test
