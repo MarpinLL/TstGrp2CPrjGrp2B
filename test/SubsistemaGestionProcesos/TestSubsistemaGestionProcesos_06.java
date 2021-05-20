@@ -4,11 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-
-import javax.management.Query;
-
-import org.junit.Ignore;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
@@ -78,30 +73,28 @@ class TestSubsistemaGestionProcesos_06 {
 		fecha.set(Calendar.MONTH, 7);
 		fecha.set(Calendar.DAY_OF_MONTH, 22);
 		p.setFechaInicio(fecha.getTime());
-		
+		Proceso p2 = null;
 		
 		try {
-			Proceso p2 = sub.inicializar(0, "proceso-1", "proceso primero", 15.0, 0.0,  "Pendiente", "Paco Meralgo", "Asfalto", incidencias, ordenes, fecha.getTime());
-			assertAll("qwrqrqwfqwefqwefwqefe",
-				    () -> assertEquals(p.getIdentificador(), p2.getIdentificador()),
-				    () -> assertEquals(p.getNombre(), p2.getNombre()),
-				    () -> assertEquals(p.getDescripcion(), p2.getDescripcion()),
-				    () -> assertEquals(p.getCoste(), p2.getCoste()),
-				    () -> assertEquals(p.getEstimado(), p2.getEstimado()),
-				    () -> assertEquals(p.getResponsable(), p2.getResponsable()),
-				    () -> assertEquals(p.getEstado(), p2.getEstado()),
-				    () -> assertEquals(p.getServicio(), p2.getServicio()),
-				    () -> assertEquals(p.getFechaInicio(), p2.getFechaInicio()),
-				    () -> assertEquals(p.getIncidencias(), p2.getIncidencias()),
-				    () -> assertEquals(p.getOrdenesTrabajo(), p2.getOrdenesTrabajo())
-				);
+			p2 = sub.inicializar(0, "proceso-1", "proceso primero", 15.0, 0.0,  "Pendiente", "Paco Meralgo", "Asfalto", incidencias, ordenes, fecha.getTime());
 		}
 		catch(CustomException ex){
 			System.out.println(ex);
 		}
-		finally {
-			
-		}
+		Proceso p3 = p2;
+		assertAll("Introducir argumentos correctos CP-0031: El proceso se ha inicializado incorrectamente",
+			    () -> assertEquals(p.getIdentificador(), p3.getIdentificador()),
+			    () -> assertEquals(p.getNombre(), p3.getNombre()),
+			    () -> assertEquals(p.getDescripcion(), p3.getDescripcion()),
+			    () -> assertEquals(p.getCoste(), p3.getCoste()),
+			    () -> assertEquals(p.getEstimado(), p3.getEstimado()),
+			    () -> assertEquals(p.getResponsable(), p3.getResponsable()),
+			    () -> assertEquals(p.getEstado(), p3.getEstado()),
+			    () -> assertEquals(p.getServicio(), p3.getServicio()),
+			    () -> assertEquals(p.getFechaInicio(), p3.getFechaInicio()),
+			    () -> assertEquals(p.getIncidencias(), p3.getIncidencias()),
+			    () -> assertEquals(p.getOrdenesTrabajo(), p3.getOrdenesTrabajo())
+			);
 		
 	}
 	
