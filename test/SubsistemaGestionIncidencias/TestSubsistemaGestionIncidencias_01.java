@@ -40,7 +40,7 @@ class TestSubsistemaGestionIncidencias_01 {
 	@DisplayName("CP-0001 Introducir argumentos correctos")
 	void testInicializar_01() throws CustomException {
 		Incidencia incidenciaEsperada = new Incidencia();
-		incidenciaEsperada.setIdentificador(0);
+		incidenciaEsperada.setIdentificador(1);
 		incidenciaEsperada.setNombreCiudadano("Ciudadano");
 		incidenciaEsperada.setDNI("53199271H");
 		incidenciaEsperada.setTelefono("34608564255");
