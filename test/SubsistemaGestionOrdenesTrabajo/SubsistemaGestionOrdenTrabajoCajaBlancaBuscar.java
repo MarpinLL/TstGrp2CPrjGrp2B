@@ -9,6 +9,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import Exception.CustomException;
@@ -16,6 +17,7 @@ import Model.OrdenTrabajo;
 import Model.Presupuesto;
 import Model.Proceso;
 
+@DisplayName("Prueba de caja blanca sobre Buscar-Revisor:Abel Martínez")
 class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 
 	private static InterfaceSubsistemaGestionOrdenTrabajo so;
@@ -48,12 +50,10 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		Proceso p = new Proceso();
 		p.setIdentificador(1);
 		o.setProceso(p);
-		System.out.println(o.getCoste());
 		so.crear(o);
-		System.out.println(o.getCoste());
-		Presupuesto ps = so.inicializar(1, "Empresa", 20.0, fechaSis.getTime(), 2, m, 5, 12345);
-		Presupuesto ps1 = so.inicializar(2, "Empresa", 20.0, fechaSis.getTime(), 2, m, 5, 12345);
-		Presupuesto ps2 = so.inicializar(3, "Empresa", 20.0, fechaSis.getTime(), 2, m, 5, 12345);
+		so.inicializar(1, "Empresa", 20.0, fechaSis.getTime(), 2, m, 5, 12345);
+		so.inicializar(2, "Empresa", 20.0, fechaSis.getTime(), 2, m, 5, 12345);
+		so.inicializar(3, "Empresa", 20.0, fechaSis.getTime(), 2, m, 5, 12345);
 		o1 = o;
 		System.out.println(o.getCoste());
 		
@@ -98,6 +98,7 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 	}
 
 	@Test
+	@DisplayName("Camino 1")
 	void testBuscar_1() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -118,12 +119,15 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+			);
 		
 	}
 	
 	@Test
+	@DisplayName("Camino 2")
 	void testBuscar_2() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -144,12 +148,15 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+			);
 		
 	}
 	
 	@Test
+	@DisplayName("Camino 3")
 	void testBuscar_3() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -170,12 +177,14 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
-		
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+			);
 	}
 	
 	@Test
+	@DisplayName("Camino 4")
 	void testBuscar_4() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -196,15 +205,19 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+			);
+		
 		
 	}
 	
 	@Test
+	@DisplayName("Camino 5")
 	void testBuscar_5() {
 				
-		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
+		ArrayList<OrdenTrabajo> esperado= new ArrayList<>();
 		
 		OrdenTrabajo filtro = new OrdenTrabajo();
 		filtro.setIdentificador(12345);		
@@ -237,12 +250,14 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
-		
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+		);
 	}
 	
 	@Test
+	@DisplayName("Camino 6")
 	void testBuscar_6() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -278,13 +293,15 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
-		
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+		);
 	}
 	
 
 	@Test
+	@DisplayName("Camino 7")
 	void testBuscar_7() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -320,12 +337,15 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+		);
 		
 	}
 
 	@Test
+	@DisplayName("Camino 8")
 	void testBuscar_8() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -361,12 +381,15 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+		);
 		
 	}
 	
 	@Test
+	@DisplayName("Camino 9")
 	void testBuscar_9() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -402,12 +425,15 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+		);
 		
 	}
 	
 	@Test
+	@DisplayName("Camino 10")
 	void testBuscar_10() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -443,12 +469,15 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+		);
 		
 	}
 	
 	@Test
+	@DisplayName("Camino 11")
 	void testBuscar_11() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -484,12 +513,15 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+		);
 		
 	}
 	
 	@Test
+	@DisplayName("Camino 12")
 	void testBuscar_12() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -512,12 +544,15 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+		);
 		
 	}
 	
 	@Test
+	@DisplayName("Camino 13")
 	void testBuscar_13() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -538,12 +573,15 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+		);
 		
 	}
 	
 	@Test
+	@DisplayName("Camino 14")
 	void testBuscar_14() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -565,12 +603,15 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+		);
 		
 	}
 	
 	@Test
+	@DisplayName("Camino 15")
 	void testBuscar_15() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -591,12 +632,14 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
-		
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+		);
 	}
 	
 	@Test
+	@DisplayName("Camino 16")
 	void testBuscar_16() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -619,12 +662,15 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(filtro);
 		
-		assertEquals(real.size(),esperado.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+		);
 		
 	}
 	
 	@Test
+	@DisplayName("Camino 17")
 	void testBuscar_17() {
 				
 		ArrayList<OrdenTrabajo> esperado = new ArrayList<>();
@@ -634,8 +680,10 @@ class SubsistemaGestionOrdenTrabajoCajaBlancaBuscar {
 		
 		ArrayList<OrdenTrabajo> real = so.buscar(null);
 		
-		assertEquals(esperado.size(),real.size(),"Listas resultadas incorrectas");
-		assertTrue(real.containsAll(esperado),"Listas resultadas incorrectas");
+		assertAll("Listas de OTs incorrectas",
+			    () -> assertEquals(esperado.size(),real.size()),
+			    () -> assertTrue(real.containsAll(esperado))
+		);
 		
 	}
 }
