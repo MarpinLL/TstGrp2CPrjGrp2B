@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -150,6 +151,7 @@ class TestSubsistemaGestionOrdenTrabajo_17 {
 	}
 	
 	@Test
+	
 	@DisplayName("Caso de prueba Buscar 0095 - Introducir ot con algunos campos cubiertos")
 	void testBuscar_95() {
 		
