@@ -18,8 +18,8 @@ import Model.OrdenTrabajo;
 import Model.Proceso;
 import SubsistemaGestionOrdenesTrabajo.SubsistemaGestionOrdenTrabajo;
 
-@DisplayName("Pruebas Actualizar caja blanca")
-class SubsistemaGestionProcesosCajaBlancaActualizar {
+@DisplayName("Pruebas Actualizar Proceso caja blanca")
+class SubsistemaGestionProcesos_CajaBlanca {
 	
 	static private SubsistemaGestionProcesos sub;
 	static private Proceso original;
@@ -630,47 +630,67 @@ class SubsistemaGestionProcesosCajaBlancaActualizar {
 	@DisplayName("Camino 12")
 	@Test
 	void testActualizar_12() {
-
-		CustomException exc = assertThrows(CustomException.class, () -> {
-			Proceso actualiza = new Proceso();
-			actualiza = new Proceso();
-			actualiza.setIdentificador(-1);
-			actualiza.setNombre(null);
-			actualiza.setDescripcion(null);
-			actualiza.setCoste(null);
-			actualiza.setEstimado(null);
-			actualiza.setEstado(null);
-			actualiza.setResponsable(null);
-			actualiza.setServicio(null);
-			actualiza.setIncidencias(null);
-			actualiza.setOrdenesTrabajo(null);
-			actualiza.setFechaInicio(null);
-			sub.actualizar(actualiza);
-		});
+		Proceso actualiza = new Proceso();
+		actualiza = new Proceso();
+		actualiza.setIdentificador(-1);
+		actualiza.setNombre(null);
+		actualiza.setDescripcion(null);
+		actualiza.setCoste(null);
+		actualiza.setEstimado(null);
+		actualiza.setEstado(null);
+		actualiza.setResponsable(null);
+		actualiza.setServicio(null);
+		actualiza.setIncidencias(null);
+		actualiza.setOrdenesTrabajo(null);
+		actualiza.setFechaInicio(null);
 		
-		assertEquals(4, exc.codigo, "Camino 12 incorrecto");
+		Proceso resultado = null;
+		try {
+			resultado = sub.actualizar(actualiza);
+		}
+		catch(CustomException ex) {
+			System.out.println(ex);
+		}
+		Proceso actualiza2 = actualiza;
+		Proceso resultado2 = resultado;
+		assertAll("Camino 12 incorrecto",
+				() -> assertEquals(null, resultado2.getIdentificador()),
+				() -> assertEquals(null, resultado2.getNombre()),
+				() -> assertEquals(null, resultado2.getDescripcion()),
+				() -> assertEquals(null, resultado2.getCoste()),
+				() -> assertEquals(null, resultado2.getEstimado()),
+				() -> assertEquals(null, resultado2.getResponsable()),
+				() -> assertEquals(null, resultado2.getEstado()),
+				() -> assertEquals(null, resultado2.getServicio()),
+				() -> assertEquals(null, resultado2.getFechaInicio()),
+				() -> assertEquals(null, resultado2.getIncidencias()),
+				() -> assertEquals(null, resultado2.getOrdenesTrabajo())
+				);
 	}
 	
 	@DisplayName("Camino 13")
 	@Test
 	void testActualizar_13() {
-		CustomException exc = assertThrows(CustomException.class, () -> {
-			Proceso actualiza = new Proceso();
-			actualiza = new Proceso();
-			actualiza.setIdentificador(null);
-			actualiza.setNombre(null);
-			actualiza.setDescripcion(null);
-			actualiza.setCoste(null);
-			actualiza.setEstimado(null);
-			actualiza.setEstado(null);
-			actualiza.setResponsable(null);
-			actualiza.setServicio(null);
-			actualiza.setIncidencias(null);
-			actualiza.setOrdenesTrabajo(null);
-			actualiza.setFechaInicio(null);
-			sub.actualizar(actualiza);
-		});
-		
-		assertEquals(4, exc.codigo, "Camino 13 incorrecto");
+		Proceso resultado = null;
+		try {
+			resultado = sub.actualizar(null);
+		}
+		catch(CustomException ex) {
+			System.out.println(ex);
+		}
+		Proceso resultado2 = resultado;
+		assertAll("Camino 13 incorrecto",
+				() -> assertEquals(null, resultado2.getIdentificador()),
+				() -> assertEquals(null, resultado2.getNombre()),
+				() -> assertEquals(null, resultado2.getDescripcion()),
+				() -> assertEquals(null, resultado2.getCoste()),
+				() -> assertEquals(null, resultado2.getEstimado()),
+				() -> assertEquals(null, resultado2.getResponsable()),
+				() -> assertEquals(null, resultado2.getEstado()),
+				() -> assertEquals(null, resultado2.getServicio()),
+				() -> assertEquals(null, resultado2.getFechaInicio()),
+				() -> assertEquals(null, resultado2.getIncidencias()),
+				() -> assertEquals(null, resultado2.getOrdenesTrabajo())
+				);
 	}
 }
