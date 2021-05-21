@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import Exception.CustomException;
 import Model.Incidencia;
@@ -20,14 +21,15 @@ import Model.Proceso;
 class TestSubsistemaGestionProcesos_09 {
 
 	static private SubsistemaGestionProcesos sub;
+	
 	static private Proceso proceso1;
 	static private Proceso proceso2;
 	
-
+	
+	
 	@BeforeAll
 	static void setUp() throws Exception {
 		sub = new SubsistemaGestionProcesos();
-
 		proceso1 = new Proceso();
 		proceso1.setIdentificador(0);
 		proceso1.setNombre("proceso-1");

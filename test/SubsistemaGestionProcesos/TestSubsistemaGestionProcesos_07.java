@@ -2,6 +2,8 @@ package SubsistemaGestionProcesos;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,6 +12,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import Exception.CustomException;
 import Model.Incidencia;
@@ -20,11 +23,14 @@ import Model.Proceso;
 class TestSubsistemaGestionProcesos_07 {
 	private static SubsistemaGestionProcesos sub;
 	private static Proceso proceso;
+	@Mock
+	private static SubsistemaGestionProcesos subMock;
 	
 	@BeforeAll
 	static void setUp() throws Exception {
 		sub = new SubsistemaGestionProcesos();
-
+		subMock = mock(SubsistemaGestionProcesos.class);
+		
 		proceso = new Proceso();
 		proceso.setIdentificador(0);
 		proceso.setNombre("proceso-1");
@@ -100,17 +106,19 @@ class TestSubsistemaGestionProcesos_07 {
 	@Test
 	@DisplayName("Caso de prueba Crear proceso 0042 - Introducir identificador repetido")
 	void testCrear_42() {
-		proceso.setIdentificador(2);
-		Proceso p = new Proceso();
-		p.setIdentificador(2);
-		p.setNombre("proceso-1");
-		p.setDescripcion("proceso primero");
-		p.setCoste(15.0);
-		p.setEstimado(0.0);
-		p.setEstado("Pendiente");
-		p.setResponsable("Paco Meralgo");
-		p.setServicio("Asfalto");
 		
+		proceso.setIdentificador(2);
+		
+		Proceso mocked = new Proceso();
+		mocked.setIdentificador(2);
+		mocked.setNombre("proceso-1");
+		mocked.setDescripcion("proceso primero");
+		mocked.setCoste(15.0);
+		mocked.setEstimado(0.0);
+		mocked.setEstado("Pendiente");
+		mocked.setResponsable("Paco Meralgo");
+		mocked.setServicio("Asfalto");
+
 		ArrayList<Incidencia> incidencias = new ArrayList<Incidencia>();  
 		Incidencia i1 = new Incidencia();
 		i1.setIdentificador(0);
@@ -130,30 +138,33 @@ class TestSubsistemaGestionProcesos_07 {
 		i2.setTipoIncidencia("Otra");
 		incidencias.add(i1);
 		incidencias.add(i2);
-		p.setIncidencias(incidencias);
+		mocked.setIncidencias(incidencias);
 		
 		ArrayList<OrdenTrabajo> ordenes = new ArrayList<OrdenTrabajo>();
 		OrdenTrabajo o1 = new OrdenTrabajo();
 		OrdenTrabajo o2 = new OrdenTrabajo();
 		ordenes.add(o1);
 		ordenes.add(o2);
-		p.setOrdenesTrabajo(ordenes);
+		mocked.setOrdenesTrabajo(ordenes);
 		
 		Calendar fecha = Calendar.getInstance();
 		fecha.set(Calendar.YEAR, 2021);
 		fecha.set(Calendar.MONTH, 7);
 		fecha.set(Calendar.DAY_OF_MONTH, 22);
-		p.setFechaInicio(fecha.getTime());
+		mocked.setFechaInicio(fecha.getTime());
+		Proceso prueba = null;
 		
 		try {
-			sub.crear(proceso);
-		} catch (CustomException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e);
+			when(subMock.inicializar(2, "proceso-1", "proceso primero", 15.0, 0.0, "Pendiente", "Paco Meralgo", "Asfalto", incidencias, ordenes, fecha.getTime())).thenReturn(mocked);
+			prueba = subMock.inicializar(2, "proceso-1", "proceso primero", 15.0, 0.0, "Pendiente", "Paco Meralgo", "Asfalto", incidencias, ordenes, fecha.getTime());
+			sub.crear(subMock.inicializar(2, "proceso-1", "proceso primero", 15.0, 0.0, "Pendiente", "Paco Meralgo", "Asfalto", incidencias, ordenes, fecha.getTime()));
+		} 
+		catch (CustomException ex) {
+			System.out.println(ex);
 		}
 		
 		CustomException ex = assertThrows(CustomException.class, () -> {
-			sub.crear(p);
+			sub.crear(subMock.inicializar(2, "proceso-1", "proceso primero", 15.0, 0.0, "Pendiente", "Paco Meralgo", "Asfalto", incidencias, ordenes, fecha.getTime()));
 		}, "Introducir proceso null CP-0042: El proceso se ha creado incorrectamente");
 		assertEquals(2, ex.codigo, "Introducir identificador repetido CP-0042: El proceso se ha creado incorrectamente");
 	}
