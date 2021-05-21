@@ -8,7 +8,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import Exception.CustomException;
@@ -461,6 +463,12 @@ class TestSubsistemaGestionIncidencias_01 {
 				"No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion erroneo");
+	}
+	
+	@Test
+	@Disabled("Esta prueba no se realiza porque las pruebas sobre el objeto Date son responsabilidad de Java")
+	@DisplayName("CP-0020 Introducir fechaInicio con formato no valido")
+	void testInicializar_20() {
 	}
 
 }
