@@ -102,7 +102,7 @@ class TestSubsistemaGestionIncidencias_02 {
 	}
 
 	@Test
-	@DisplayName("CP-0023 Introducir fechaInicio < hoy")
+	@DisplayName("CP-0024 Introducir fechaInicio < hoy")
 	void testCrear_04() throws CustomException {
 		CustomException e;
 		Incidencia incidencia = new Incidencia();
