@@ -599,7 +599,6 @@ class SubsistemaGestionOrdenTrabajo_CajaBlanca {
 			try {
 				ps = so.inicializar(451, "Empresa", 2000.0, fechaSis.getTime(), 2, m, 5, null);
 			} catch (CustomException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			ArrayList<Presupuesto> psp = new ArrayList<>();
@@ -642,7 +641,6 @@ class SubsistemaGestionOrdenTrabajo_CajaBlanca {
 			try {
 				ps = so.inicializar(451, "Empresa", 2000.0, fechaSis.getTime(), 2, m, 5, null);
 			} catch (CustomException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			ArrayList<Presupuesto> psp = new ArrayList<>();
@@ -686,7 +684,6 @@ class SubsistemaGestionOrdenTrabajo_CajaBlanca {
 			try {
 				ps = so.inicializar(451, "Empresa", 2000.0, fechaSis.getTime(), 2, m, 5, null);
 			} catch (CustomException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			ArrayList<Presupuesto> psp = new ArrayList<>();
@@ -730,7 +727,6 @@ class SubsistemaGestionOrdenTrabajo_CajaBlanca {
 			try {
 				ps = so.inicializar(451, "Empresa", 2000.0, fechaSis.getTime(), 2, m, 5, null);
 			} catch (CustomException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			ArrayList<Presupuesto> psp = new ArrayList<>();
@@ -774,7 +770,6 @@ class SubsistemaGestionOrdenTrabajo_CajaBlanca {
 			try {
 				ps = so.inicializar(451, "Empresa", 2000.0, fechaSis.getTime(), 2, m, 5, null);
 			} catch (CustomException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			ArrayList<Presupuesto> psp = new ArrayList<>();
@@ -818,7 +813,6 @@ class SubsistemaGestionOrdenTrabajo_CajaBlanca {
 			try {
 				ps = so.inicializar(451, "Empresa", 2000.0, fechaSis.getTime(), 2, m, 5, null);
 			} catch (CustomException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			ArrayList<Presupuesto> psp = new ArrayList<>();
@@ -862,7 +856,6 @@ class SubsistemaGestionOrdenTrabajo_CajaBlanca {
 			try {
 				ps = so.inicializar(451, "Empresa", 2000.0, fechaSis.getTime(), 2, m, 5, null);
 			} catch (CustomException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			ArrayList<Presupuesto> psp = new ArrayList<>();

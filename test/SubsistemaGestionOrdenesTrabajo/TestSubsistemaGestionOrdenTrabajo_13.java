@@ -119,7 +119,6 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		fechaSis.set(Calendar.MONTH, 8);
 		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
 		
-		//todo revisar esto
 		try {
 			sub.inicializar(123, "Eléctricas Pepe", 5000.0, fechaSis.getTime(), 80, material, 10, 12345);
 		} catch (CustomException e1) {
@@ -145,7 +144,6 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 		fechaSis.set(Calendar.YEAR, 2021);
 		fechaSis.set(Calendar.MONTH, 8);
 		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
-		//todo
 		
 		//Assert
 		CustomException e = assertThrows(CustomException.class,
@@ -174,7 +172,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 						5000.0, fechaSis.getTime(), 80, material, 10, 12345), "No salta la excepcion");
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
-		//todo el mensaje de error está mal escrito
+		//el mensaje de error está mal escrito en el código
 		assertEquals("Identificador negativo", e.getMessage(), "Mensaje de excepcion incorrecto");
 	}
 	
@@ -195,7 +193,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 				() -> sub.inicializar(123, "Eléctricas Pepe", -5000.0, fechaSis.getTime(), 80, material, 10, 12345));
 
 		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
-		//todo el mensaje de error está mal escrito
+		//el mensaje de error está mal escrito en el código
 		assertEquals("Identificador negativo", e.getMessage(), "Mensaje de excepcion incorrecto");
 	}
 	

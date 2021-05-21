@@ -78,7 +78,6 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 		try {
 			presArgumento = sub.inicializar(345, "Pepa Electricas", 550.0, fechaSis.getTime(), 2, material, 4, 12345);
 		} catch (CustomException e1) {
-			//todo metodo fail
 			e1.printStackTrace();
 		}
 		
