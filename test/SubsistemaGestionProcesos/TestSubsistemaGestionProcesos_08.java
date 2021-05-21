@@ -76,7 +76,7 @@ class TestSubsistemaGestionProcesos_08 {
 	void testActualizar_43() {
 			
 		CustomException ex = assertThrows(CustomException.class, () -> {
-		sub.actualizar(null);
+			sub.actualizar(null);
 		}, "Introducir proceso null CP-0043: El proceso se ha actualizado incorrectamente");
 		
 		assertEquals(1, ex.codigo, "Introducir proceso null CP-0043: El proceso se ha actualizado incorrectamente");
