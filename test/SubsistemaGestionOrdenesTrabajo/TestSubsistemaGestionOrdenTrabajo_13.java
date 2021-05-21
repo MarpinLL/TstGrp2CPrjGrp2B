@@ -199,7 +199,6 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 	}
 	
 	
-	/****************************************************************************************************/
 	@Test
 	@Tag("Disabled")
 	@DisplayName("Caso de prueba Inicializar 0074 - Introducir fecha con formato incorrecto")

@@ -101,22 +101,9 @@ class TestSubsistemaGestionOrdenTrabajo_15 {
 			e.printStackTrace();
 		}
 		
-		//TODO
-		//assertDoesNotThrow(() -> sub.asignarEmpresa(otArgumento, presArgumento), "Lanza excepción CustomException");
-		
 		//Assert
-		//assertEquals(otEsperada, otReal, "Error al asignar empresa");
+		assertEquals(otEsperada, otReal, "Error al asignar empresa");
 		
-		final OrdenTrabajo realFinal = otReal;
-		
-		//TODO
-		
-		assertAll(
-				() -> {assertEquals(otEsperada.getIdentificador(), realFinal.getIdentificador(), "Identificador distinto");},
-				() -> {assertEquals(otEsperada.getDescripcion(), realFinal.getDescripcion(), "Descripción distinta");}//,
-				/*() -> {assertEquals(otEsperada, realFinal.getDescripcion(), "Descripción distinta");}
-				() -> {assertEquals(otEsperada.getDescripcion(), realFinal.getDescripcion(), "Descripción distinta");}*/
-				);
 	}
 	
 	@Test

@@ -229,35 +229,11 @@ class TestSubsistemaGestionOrdenTrabajo_12 {
 		assertEquals("Personal negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
 	}
 	
-	//TODO ELIMINAR
 	@Test
-	@DisplayName("Caso de prueba Inicializar 0063 - Introducir fecha de inicio con formato incorrecto")
+	@Tag("Disabled")
+	@DisplayName("Caso de prueba Inicializar 0063 - Introducir fecha con formato incorrecto")
 	void testInicializar_63() {
-		//Arrange
-		ArrayList<String> material = new ArrayList<>();
-		material.add("Metal");
-		material.add("Bombillas");
-		
-		Calendar fechaSis = Calendar.getInstance();
-		fechaSis.set(Calendar.YEAR, 2021);
-		fechaSis.set(Calendar.MONTH, 2);
-		fechaSis.set(Calendar.DAY_OF_MONTH, 30);
-		
-		ArrayList<Presupuesto> pres = new ArrayList<>();
-		Presupuesto c1 = new Presupuesto(1, "Pepe Electricas", 350.0, fechaSis.getTime(), 2, material, 2);
-		pres.add(c1);
-		
-		Proceso proceso = new Proceso(12, "Proceso 1", "Descripcion de proceso", 420.0, 230.5, 
-				"Pendiente de asignación", "Pepe", "Electricidad", new ArrayList<>(), 
-				new ArrayList<>(), fechaSis.getTime());
-		
-		//Assert
-		Exception e = assertThrows(Exception.class,
-				() -> sub.inicializar(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-						material, pres, 1000.0, "Pepe", 10, fechaSis.getTime(), 80, "Pendiente de asignación", proceso), "No salta la excepcion");
-
-		assertEquals(1, e, "Codigo de excepcion incorrecto");
-		assertEquals("Personal negativo", e.getMessage(), "Mensaje de excepcion incorrecto");	
+		fail("No se puede ejecutar este método");
 	}
 	
 

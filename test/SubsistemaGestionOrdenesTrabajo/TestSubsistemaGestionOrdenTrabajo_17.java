@@ -163,11 +163,6 @@ class TestSubsistemaGestionOrdenTrabajo_17 {
 		fechaSis.set(Calendar.MONTH, 9);
 		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
 		
-			//proceso
-		Proceso proceso = new Proceso(12, "Proceso 1", "Descripcion de proceso", 420.0, 230.5, 
-				"Pendiente de asignación", "Pepe", "Electricidad", new ArrayList<>(), 
-				new ArrayList<>(), fechaSis.getTime());
-		
 			//presupuestos
 		ArrayList<Presupuesto> presup = new ArrayList<>();
 		Presupuesto c1 = new Presupuesto(123, "Pepe Electricas", 350.0, fechaSis.getTime(), 4, materialAntiguo, 2);
@@ -182,7 +177,6 @@ class TestSubsistemaGestionOrdenTrabajo_17 {
 		
 		ArrayList<OrdenTrabajo> esperadas = new ArrayList<>();
 		esperadas.add(i);
-		
 		
 		//Act
 		ArrayList<OrdenTrabajo> reales = sub.buscar(new OrdenTrabajo(null,null,null,null,550.0,null,null, null, null, null, null));

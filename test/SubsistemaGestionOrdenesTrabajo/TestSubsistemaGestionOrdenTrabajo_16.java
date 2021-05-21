@@ -144,11 +144,6 @@ class TestSubsistemaGestionOrdenTrabajo_16 {
 		fechaSis.set(Calendar.MONTH, 9);
 		fechaSis.set(Calendar.DAY_OF_MONTH, 22);
 		
-			//proceso
-		Proceso proceso = new Proceso(12, "Proceso 1", "Descripcion de proceso", 420.0, 230.5, 
-				"Pendiente de asignación", "Pepe", "Electricidad", new ArrayList<>(), 
-				new ArrayList<>(), fechaSis.getTime());
-		
 			//presupuestos
 		ArrayList<Presupuesto> presup = new ArrayList<>();
 		Presupuesto c1 = new Presupuesto(123, "Pepe Electricas", 350.0, fechaSis.getTime(), 4, materialAntiguo, 2);
@@ -159,15 +154,18 @@ class TestSubsistemaGestionOrdenTrabajo_16 {
 		
 				
 		OrdenTrabajo otParametro = new OrdenTrabajo(12345, "Se cambiarán las farolas de la Avenida Rosalía de Castro",
-				materialAntiguo, presup, 550.0, "Pepa S. L.", 2, fechaSis.getTime(), 2, "Asignada", null);
+				materialAntiguo, presup, 550.0, "Pepa S. L.", 2, fechaSis.getTime(), 2, "En curso", null);
 		
 		//Act
+		OrdenTrabajo otReal = null;
+		try {
+			otReal = sub.gestionarRecursos(otParametro);
+		} catch (CustomException e) {
+			e.printStackTrace();
+		}
+		
 		//Assert
-		CustomException e = assertThrows(CustomException.class,
-				() -> sub.gestionarRecursos(otParametro), "No salta la excepcion");
-
-		assertEquals(1, e.codigo, "Codigo de excepcion incorrecto");
-		assertEquals("Estado no valido", e.getMessage(), "Mensaje de excepcion incorrecto");
+		assertEquals(otParametro, otReal, "Error al gestionar recursos");
 	}
 	
 }
