@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -200,7 +201,7 @@ class TestSubsistemaGestionOrdenTrabajo_13 {
 	
 	
 	@Test
-	@Tag("Disabled")
+	@Disabled("No se puede probar la clase Date")
 	@DisplayName("Caso de prueba Inicializar 0074 - Introducir fecha con formato incorrecto")
 	void testInicializar_74() {
 		fail("No se puede ejecutar este método");
